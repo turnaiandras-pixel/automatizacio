@@ -21,6 +21,7 @@
       background: #0f172a;
       color: #e2e8f0;
       line-height: 1.7;
+      word-wrap: break-word;
     }
 
     .site-header {
@@ -168,6 +169,7 @@
       border-radius: 24px;
       padding: 32px;
       box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+      overflow: hidden;
     }
 
     .hero-card {
@@ -188,10 +190,14 @@
 
     h2 {
       font-size: 56px;
-      line-height: 1.04;
+      line-height: 1.02;
       margin-bottom: 18px;
       color: #f8fafc;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.04em;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      hyphens: auto;
     }
 
     .subtitle {
@@ -220,6 +226,7 @@
       line-height: 1.8;
       color: #cbd5e1;
       margin-bottom: 16px;
+      max-width: 100%;
     }
 
     ul {
@@ -355,19 +362,20 @@
       }
 
       main {
-        padding: 28px 20px 48px;
+        padding: 24px 14px 44px;
       }
 
       .hero-card,
       .section-card {
-        padding: 24px 20px;
+        padding: 22px 18px;
         border-radius: 18px;
       }
 
       h2 {
-        font-size: 34px;
-        line-height: 1.05;
-        letter-spacing: -0.02em;
+        font-size: 28px;
+        line-height: 1.06;
+        letter-spacing: -0.03em;
+        margin-bottom: 16px;
       }
 
       .subtitle,
@@ -375,7 +383,11 @@
       p,
       li {
         font-size: 17px;
-        line-height: 1.8;
+        line-height: 1.75;
+      }
+
+      h3 {
+        font-size: 24px;
       }
 
       .hero-actions {
