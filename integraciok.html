@@ -5,359 +5,248 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Integrációk</title>
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+html, body {
+  overflow-x: hidden;
+}
+
+.site-header {
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: #e2e8f0;
+  min-width: 0;
+}
+
+.brand-mark {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #20b69e, #17917f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 24px rgba(32, 182, 158, 0.18);
+  flex-shrink: 0;
+}
+
+.brand-mark svg {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+  min-width: 0;
+}
+
+.brand-name {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #f8fafc;
+}
+
+.brand-name .ai {
+  color: #20b69e;
+}
+
+.brand-tagline {
+  font-size: 12px;
+  color: #94a3b8;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.menu-toggle {
+  display: none;
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: transparent;
+  color: #fff;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  font-size: 22px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav a,
+.dropbtn {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.nav a:hover,
+.dropbtn:hover {
+  color: #fff;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 240px;
+  background: #1e293b;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 16px;
+  color: #cbd5e1;
+  text-decoration: none;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.dropdown-content a:hover {
+  background: #334155;
+  color: #fff;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    padding: 16px 20px;
   }
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: #0f172a;
-    color: #e2e8f0;
-    line-height: 1.7;
+  .brand {
+    max-width: calc(100% - 58px);
   }
 
-    header {
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      gap: 20px;
-    }
+  .brand-name {
+    font-size: 18px;
+  }
 
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-      color: #e2e8f0;
-    }
+  .brand-tagline {
+    font-size: 11px;
+  }
 
-    .brand:hover {
-      opacity: 0.95;
-    }
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .brand-mark {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      background: linear-gradient(180deg, #20b69e, #17917f);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 24px rgba(32, 182, 158, 0.18);
-      flex-shrink: 0;
-    }
+  .nav {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 20px;
+    right: 20px;
+    background: #1e293b;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 12px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    z-index: 1000;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  }
 
-    .brand-mark svg {
-      width: 26px;
-      height: 26px;
-      display: block;
-    }
+  .nav.open {
+    display: flex;
+  }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.05;
-    }
-
-    .brand-name {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 0.4px;
-      color: #f8fafc;
-    }
-
-    .brand-name .ai {
-      color: #20b69e;
-    }
-
-    .brand-tagline {
-      font-size: 12px;
-      color: #94a3b8;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      margin-top: 4px;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
   .nav a,
   .dropbtn {
-    color: #94a3b8;
-    text-decoration: none;
-    font-size: 14px;
-    cursor: pointer;
-  }
-
-  .nav a:hover,
-  .dropbtn:hover {
-    color: #fff;
+    width: 100%;
+    display: block;
+    font-size: 16px;
+    padding: 10px 6px;
   }
 
   .dropdown {
-    position: relative;
-    display: inline-block;
+    width: 100%;
   }
 
   .dropdown-content {
     display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 240px;
-    background: #1e293b;
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 10px;
-    padding: 10px 0;
-    z-index: 1000;
+    position: static;
+    min-width: 100%;
+    margin-top: 6px;
   }
 
-  .dropdown-content a {
-    display: block;
-    padding: 10px 16px;
-    color: #cbd5e1;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
-  .dropdown-content a:hover {
-    background: #334155;
-    color: #fff;
-  }
-
-  .dropdown:hover .dropdown-content {
+  .dropdown.open .dropdown-content {
     display: block;
   }
-
-  main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 56px 40px 80px;
-  }
-
-  .hero-card {
-    background: linear-gradient(180deg, rgba(30,41,59,0.95), rgba(15,23,42,0.95));
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px;
-    padding: 48px;
-    margin-bottom: 36px;
-  }
-
-  .badge {
-    display: inline-block;
-    margin-bottom: 18px;
-    font-size: 14px;
-    color: #20b69e;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-  }
-
-  h2 {
-    font-size: 52px;
-    line-height: 1.1;
-    margin-bottom: 18px;
-    color: #f8fafc;
-  }
-
-  .subtitle {
-    color: #94a3b8;
-    font-size: 22px;
-    line-height: 1.6;
-    max-width: 850px;
-    margin-bottom: 28px;
-  }
-
-  .lead {
-    color: #cbd5e1;
-    font-size: 18px;
-    max-width: 900px;
-    margin-bottom: 16px;
-  }
-
-  .section-card {
-    background: #111c31;
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 18px;
-    padding: 36px;
-    margin-bottom: 24px;
-  }
-
-  h3 {
-    font-size: 28px;
-    margin-bottom: 14px;
-    color: #f8fafc;
-  }
-
-  p {
-    margin-bottom: 16px;
-    color: #cbd5e1;
-  }
-
-  ul {
-    padding-left: 20px;
-    margin-bottom: 0;
-  }
-
-  li {
-    margin-bottom: 10px;
-    color: #cbd5e1;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    margin-top: 24px;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 14px 22px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 600;
-    transition: 0.25s ease;
-  }
-
-  .btn-primary {
-    background: #20b69e;
-    color: #ffffff;
-  }
-
-  .btn-primary:hover {
-    background: #1ca08a;
-  }
-
-  .btn-secondary {
-    border: 1px solid rgba(255,255,255,0.16);
-    color: #e2e8f0;
-    background: transparent;
-  }
-
-  .btn-secondary:hover {
-    background: #1e293b;
-  }
-
-  footer {
-    text-align: center;
-    padding: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    color: #64748b;
-    font-size: 14px;
-  }
-
-  footer a {
-    color: #94a3b8;
-    margin: 0 10px;
-    text-decoration: none;
-  }
-
-  footer a:hover {
-    color: #fff;
-  }
-
-  @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 14px;
-        padding: 18px 20px;
-      }
-
-      .brand {
-        justify-content: center;
-      }
-
-      .brand-name {
-        font-size: 20px;
-      }
-
-      .nav {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-    .nav a {
-      margin: 0 10px;
-    }
-
-    .dropdown-content {
-      position: static;
-      margin-top: 8px;
-    }
-
-    main {
-      padding: 32px 20px 60px;
-    }
-
-    .hero-card,
-    .section-card {
-      padding: 28px 22px;
-      border-radius: 16px;
-    }
-
-    h2 {
-      font-size: 36px;
-    }
-
-    .subtitle {
-      font-size: 18px;
-    }
-
-    .hero-actions {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .btn {
-      text-align: center;
-    }
-
-    h3 {
-      font-size: 24px;
-    }
-  }
+}
 </style>
 </head>
 <body>
-  <header>
-    <a href="index.html" class="brand" aria-label="TurnAI kezdőlap">
-      <div class="brand-mark">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M14 14H31" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
-          <path d="M14 24H26" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
-          <path d="M14 34H22" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
-          <circle cx="34" cy="14" r="3.5" fill="#0F172A"/>
-          <circle cx="29" cy="24" r="3.5" fill="#0F172A"/>
-          <circle cx="25" cy="34" r="3.5" fill="#0F172A"/>
-        </svg>
-      </div>
-      <div class="brand-text">
-        <span class="brand-name">Turn<span class="ai">AI</span></span>
-        <span class="brand-tagline">automatizálás · integráció · ai</span>
-      </div>
-    </a>
-    <nav class="nav">
-      <a href="index.html">Kezdőlap</a>
-      <div class="dropdown">
-        <a href="javascript:void(0)" class="dropbtn">Szolgáltatások</a>
-        <div class="dropdown-content">
-          <a href="folyamatautomatizalas.html">Folyamatautomatizálás</a>
-          <a href="integraciok.html">Integrációk</a>
-          <a href="ai-megoldasok.html">AI megoldások</a>
-        </div>
-      </div>
-      <a href="adatvedelem.html">Adatvédelem</a>
-      <a href="impresszum.html">Impresszum</a>
-    </nav>
-  </header>
+ <header class="site-header">
+  <a href="index.html" class="brand" aria-label="TurnAI kezdőlap">
+    <div class="brand-mark">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M14 14H31" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+        <path d="M14 24H26" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+        <path d="M14 34H22" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="34" cy="14" r="3.5" fill="#0F172A"/>
+        <circle cx="29" cy="24" r="3.5" fill="#0F172A"/>
+        <circle cx="25" cy="34" r="3.5" fill="#0F172A"/>
+      </svg>
+    </div>
+    <div class="brand-text">
+      <span class="brand-name">Turn<span class="ai">AI</span></span>
+      <span class="brand-tagline">automatizálás · integráció · ai</span>
+    </div>
+  </a>
 
+  <button class="menu-toggle" aria-label="Menü megnyitása" aria-expanded="false">☰</button>
+
+  <nav class="nav">
+    <a href="index.html">Kezdőlap</a>
+
+    <div class="dropdown">
+      <a href="#" class="dropbtn">Szolgáltatások</a>
+      <div class="dropdown-content">
+        <a href="folyamatautomatizalas.html">Folyamatautomatizálás</a>
+        <a href="integraciok.html">Integrációk</a>
+        <a href="ai-megoldasok.html">AI megoldások</a>
+      </div>
+    </div>
+
+    <a href="adatvedelem.html">Adatvédelem</a>
+    <a href="impresszum.html">Impresszum</a>
+  </nav>
+</header>
 <main>
   <section class="hero-card">
     <div class="badge">🔗 Szolgáltatás</div>
@@ -416,5 +305,54 @@
     <a href="adatvedelem.html">Adatvédelem</a> |
     <a href="impresszum.html">Impresszum</a>
   </footer>
+  .service-hero,
+.hero-card,
+.service-card,
+.content-card {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .hero,
+  .service-hero {
+    padding: 28px 20px 24px;
+  }
+
+  .hero-card,
+  .service-card,
+  .content-card {
+    padding: 24px 20px;
+    border-radius: 18px;
+  }
+
+  h1,
+  .hero h1,
+  .service-hero h1 {
+    font-size: 34px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .hero p,
+  .service-hero p,
+  .lead,
+  .service-lead {
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .section,
+  .content-section {
+    padding: 28px 20px 48px;
+  }
+
+  .section p,
+  .content-section p,
+  .service-card p {
+    font-size: 17px;
+    line-height: 1.8;
+  }
+}
 </body>
 </html>
