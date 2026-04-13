@@ -88,6 +88,41 @@
       color: #94a3b8;
       margin-bottom: 30px;
     }
+    .hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 22px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.btn-primary {
+  background: #20b69e;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: #1ca08a;
+}
+
+.btn-secondary {
+  border: 1px solid rgba(255,255,255,0.16);
+  color: #e2e8f0;
+  background: transparent;
+}
+
+.btn-secondary:hover {
+  background: #1e293b;
+}
     p {
       margin-bottom: 16px;
       color: #cbd5e1;
@@ -143,6 +178,10 @@
       h2 {
         font-size: 30px;
       }
+      .hero-actions {
+  flex-direction: column;
+  align-items: flex-start;
+}
     }
   </style>
 </head>
@@ -165,13 +204,27 @@
   </header>
 
   <main>
-    <div class="badge">⚙️ Szolgáltatás</div>
-    <h2>Folyamatautomatizálás</h2>
-    <p class="subtitle">Az ismétlődő, időigényes feladatokat teljesen automatizáljuk.</p>
+       <div class="badge">⚙️ Szolgáltatás</div>
+    <h2>Folyamatautomatizálás cégeknek</h2>
+    <p class="subtitle">
+      Az ismétlődő manuális feladatokat automatizált digitális folyamatokká alakítjuk,
+      hogy gyorsabb, átláthatóbb és hatékonyabb működést érj el.
+    </p>
 
-    <p>A folyamatautomatizálás azt jelenti, hogy a rendszeresen ismétlődő manuális feladatokat automatikus digitális folyamatokká alakítjuk.</p>
+    <div class="hero-actions">
+      <a href="mailto:turnai.andras@gmail.com" class="btn btn-primary">Konzultáció kérése</a>
+      <a href="integraciok.html" class="btn btn-secondary">Integrációk megtekintése</a>
+    </div>
 
-    <p>Ez gyorsabb működést, kevesebb hibát és átláthatóbb üzleti folyamatokat eredményez.</p>
+    <p>
+      A folyamatautomatizálás segít kiváltani az ismétlődő adminisztrációt, csökkenteni
+      a hibalehetőségeket, és stabilabbá tenni a napi működést.
+    </p>
+
+    <p>
+      Olyan megoldásokat építünk, amelyek kevesebb manuális munkát, gyorsabb reakcióidőt
+      és jobban követhető üzleti folyamatokat eredményeznek.
+    </p>
 
     <h3>Miben segít?</h3>
     <ul>
