@@ -633,35 +633,82 @@ footer a:hover {
     }
 
 @media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
   header {
-    flex-direction: column;
-    gap: 12px;
+    padding: 16px 20px;
+    align-items: flex-start;
   }
 
   .nav {
-    flex-wrap: wrap;
-    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 12px;
   }
 
-  .nav a {
-    margin: 0 10px;
+  .nav a,
+  .dropbtn {
+    display: block;
+    width: 100%;
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .dropdown {
+    width: 100%;
   }
 
   .dropdown-content {
     position: static;
-    margin-top: 8px;
+    min-width: 100%;
+    margin-top: 6px;
+  }
+
+  .hero {
+    height: auto;
+    padding: 56px 20px 40px;
   }
 
   .hero h2 {
-    font-size: 38px;
+    font-size: 42px;
+    line-height: 1.05;
   }
 
-  .hero-text {
-    font-size: 17px;
+  .hero p {
+    font-size: 18px;
+  }
+
+  .hero-buttons,
+  .cta-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .hero-buttons a,
+  .cta-group a,
+  .hero .btn {
+    width: 100%;
+    text-align: center;
   }
 
   .section {
-    padding: 60px 20px;
+    padding: 56px 20px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  #n8n-chat {
+    bottom: 88px;
+    right: 16px;
   }
 }
   </style>
