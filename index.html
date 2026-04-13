@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automatizáció</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --chat--color--primary: #e74266;
+      --chat--color--primary-shade-50: #db4061;
+      --chat--color--primary--shade-100: #cf3c5c;
+      --chat--color--secondary: #20b69e;
+      --chat--color-secondary-shade-50: #1ca08a;
+      --chat--color-white: #fff;
+      --chat--color-light: #f2f4f8;
+      --chat--color-light-shade-50: #e6e9f1;
+      --chat--color-light-shade-100: #c2c5cc;
+      --chat--color-medium: #d2d4d9;
+      --chat--color-dark: #101330;
+      --chat--color-disabled: #d2d4d9;
+      --chat--color-typing: #404040;
+
+      --chat--spacing: 1rem;
+      --chat--border-radius: 0.25rem;
+      --chat--transition-duration: 0.15s;
+      --chat--font-family:
+        -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+        'Helvetica Neue', sans-serif;
+
+      --chat--window--width: 400px;
+      --chat--window--height: 600px;
+      --chat--window--bottom: var(--chat--spacing);
+      --chat--window--right: var(--chat--spacing);
+      --chat--window--z-index: 9999;
+      --chat--window--border: 1px solid var(--chat--color-light-shade-50);
+      --chat--window--border-radius: var(--chat--border-radius);
+      --chat--window--margin-bottom: var(--chat--spacing);
+
+      --chat--header-height: auto;
+      --chat--header--padding: var(--chat--spacing);
+      --chat--header--background: var(--chat--color-dark);
+      --chat--header--color: var(--chat--color-light);
+
+      --chat--message--font-size: 1rem;
+      --chat--message--padding: var(--chat--spacing);
+      --chat--message--border-radius: var(--chat--border-radius);
+      --chat--message-line-height: 1.5;
+      --chat--message--margin-bottom: calc(var(--chat--spacing) * 1);
+      --chat--message--bot--background: var(--chat--color-white);
+      --chat--message--bot--color: var(--chat--color-dark);
+      --chat--message--user--background: var(--chat--color--secondary);
+      --chat--message--user--color: var(--chat--color-white);
+
+      --chat--toggle--size: 64px;
+      --chat--toggle--width: var(--chat--toggle--size);
+      --chat--toggle--height: var(--chat--toggle--size);
+      --chat--toggle--border-radius: 50%;
+      --chat--toggle--background: var(--chat--color--primary);
+      --chat--toggle--hover--background: var(--chat--color--primary-shade-50);
+      --chat--toggle--active--background: var(--chat--color--primary--shade-100);
+      --chat--toggle--color: var(--chat--color-white);
+
+      --chat--textarea--height: 50px;
+      --chat--input--background: var(--chat--color-white);
+
+      --chat--button--background--primary: var(--chat--color--secondary);
+      --chat--button--background--primary--hover: var(--chat--color-secondary-shade-50);
+
+      --chat--input--send--button--background: var(--chat--color-white);
+      --chat--input--send--button--color: var(--chat--color--secondary);
+
+      --chat--body--background: var(--chat--color-light);
+      --chat--footer--background: var(--chat--color-light);
+      --chat--footer--color: var(--chat--color-dark);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    header h1 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav a,
+    .dropbtn {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .nav a:hover,
+    .dropbtn:hover {
+      color: #fff;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 240px;
+      background: #1e293b;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px 16px;
+      color: #cbd5e1;
+      text-decoration: none;
+      white-space: nowrap;
+      margin: 0;
+    }
+
+    .dropdown-content a:hover {
+      background: #334155;
+      color: #fff;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .hero {
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #94a3b8;
+      max-width: 600px;
+    }
+
+    .section {
+      padding: 80px 40px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: #334155;
+    }
+
+    .card h4 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #94a3b8;
+    }
+
+    .card a {
+      color: #e2e8f0;
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #94a3b8;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .nav a {
+        margin: 0 10px;
+      }
+
+      .dropdown-content {
+        position: static;
+        margin-top: 8px;
+      }
+
+      .hero h2 {
+        font-size: 36px;
+      }
+
+      .section {
+        padding: 60px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Automatizáció</h1>
+    <nav class="nav">
+      <a href="index.html">Kezdőlap</a>
+
+      <div class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Szolgáltatások</a>
+        <div class="dropdown-content">
+          <a href="folyamatautomatizalas.html">Folyamatautomatizálás</a>
+          <a href="integraciok.html">Integrációk</a>
+          <a href="ai-megoldasok.html">AI megoldások</a>
+        </div>
+      </div>
+
+      <a href="adatvedelem.html">Adatvédelem</a>
+      <a href="impresszum.html">Impresszum</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Okos Automatizáció</h2>
+    <p>Időt spórolunk, rendszereket optimalizálunk, és automatizáljuk a monoton feladatokat — professzionális megoldásokkal.</p>
+  </section>
+
+  <section id="szolgaltatasok" class="section">
+    <h3>Mit csinálunk?</h3>
+    <div class="cards">
+      <div class="card">
+        <h4><a href="folyamatautomatizalas.html">Folyamatautomatizálás</a></h4>
+        <p>Az ismétlődő, időigényes feladatokat teljesen automatizáljuk.</p>
+      </div>
+      <div class="card">
+        <h4><a href="integraciok.html">Integrációk</a></h4>
+        <p>Rendszerek összekapcsolása hatékony workflow érdekében.</p>
+      </div>
+      <div class="card">
+        <h4><a href="ai-megoldasok.html">AI megoldások</a></h4>
+        <p>Mesterséges intelligencia üzleti folyamatokra.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Automatizáció |
+    <a href="adatvedelem.html">Adatvédelem</a> |
+    <a href="impresszum.html">Impresszum</a>
+  </footer>
+
+  <div id="n8n-chat"></div>
+
+  <script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+    createChat({
+      webhookUrl: 'https://n8n-2-5jna.onrender.com/webhook/b80d57ee-fc95-42de-8a57-dad2c5db98ce/chat',
+      webhookConfig: {
+        method: 'POST',
+        headers: {}
+      },
+      target: '#n8n-chat',
+      mode: 'window',
+      chatInputKey: 'chatInput',
+      chatSessionKey: 'sessionId',
+      loadPreviousSession: true,
+      metadata: {},
+      showWelcomeScreen: false,
+      defaultLanguage: 'en',
+      initialMessages: [
+        'Szia!👋',
+        'Én egy AI automatizált chat vagyok! Miben segíthetek neked?'
+      ],
+      i18n: {
+        en: {
+          title: 'Szia!👋',
+          subtitle: 'Itt vagyok 24/7.',
+          footer: '',
+          getStarted: 'Új beszélgetés',
+          inputPlaceholder: 'Mit szeretnél tudni?',
+        },
+      },
+      enableStreaming: false,
+    });
+  </script>
+</body>
+</html>
