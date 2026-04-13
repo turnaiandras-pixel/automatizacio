@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integrációk</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      line-height: 1.7;
+    }
+    header {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    header h1 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav a,
+    .dropbtn {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .nav a:hover,
+    .dropbtn:hover {
+      color: #fff;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 240px;
+      background: #1e293b;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 10px 16px;
+      color: #cbd5e1;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .dropdown-content a:hover {
+      background: #334155;
+      color: #fff;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 80px 40px;
+    }
+    .badge {
+      display: inline-block;
+      margin-bottom: 16px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    h2 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      color: #94a3b8;
+      margin-bottom: 30px;
+    }
+    p {
+      margin-bottom: 16px;
+      color: #cbd5e1;
+    }
+    h3 {
+      font-size: 24px;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      color: #f8fafc;
+    }
+    ul {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+      color: #cbd5e1;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #64748b;
+      font-size: 14px;
+    }
+    footer a {
+      color: #94a3b8;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: #fff;
+    }
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .nav a {
+        margin: 0 10px;
+      }
+      .dropdown-content {
+        position: static;
+        margin-top: 8px;
+      }
+      main {
+        padding: 60px 20px;
+      }
+      h2 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Automatizáció</h1>
+    <nav class="nav">
+      <a href="index.html">Kezdőlap</a>
+      <div class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Szolgáltatások</a>
+        <div class="dropdown-content">
+          <a href="folyamatautomatizalas.html">Folyamatautomatizálás</a>
+          <a href="integraciok.html">Integrációk</a>
+          <a href="ai-megoldasok.html">AI megoldások</a>
+        </div>
+      </div>
+      <a href="adatvedelem.html">Adatvédelem</a>
+      <a href="impresszum.html">Impresszum</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="badge">🔗 Szolgáltatás</div>
+    <h2>Integrációk</h2>
+    <p class="subtitle">Rendszerek összekapcsolása hatékony workflow érdekében.</p>
+
+    <p>Az integrációk célja, hogy a vállalkozásod által használt különböző rendszerek automatikusan együttműködjenek. Így nem kell ugyanazokat az adatokat több helyre kézzel felvinni.</p>
+
+    <p>Összekötjük például a weboldalt, űrlapokat, CRM-et, e-mail rendszert, naptárat, számlázót vagy más belső eszközöket, hogy a munkafolyamat gyorsabb és átláthatóbb legyen.</p>
+
+    <h3>Miben segít?</h3>
+    <ul>
+      <li>Különböző rendszerek összekapcsolása</li>
+      <li>Automatikus adatáramlás</li>
+      <li>Kevesebb kézi adminisztráció</li>
+      <li>Gyorsabb működés</li>
+      <li>Egységesebb workflow</li>
+    </ul>
+
+    <h3>Példák</h3>
+    <p>Ha valaki kitölt egy kapcsolatfelvételi űrlapot, az adat automatikusan bekerülhet a CRM-be, e-mail értesítést küldhet a csapatnak, és akár új feladatot is létrehozhat a projektkezelő rendszerben.</p>
+  </main>
+
+  <footer>
+    © 2026 Automatizáció |
+    <a href="adatvedelem.html">Adatvédelem</a> |
+    <a href="impresszum.html">Impresszum</a>
+  </footer>
+</body>
+</html>
