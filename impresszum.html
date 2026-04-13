@@ -4,179 +4,190 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Impresszum | TurnAI</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    :root {
+      --color-bg: #0f172a;
+      --color-text: #e2e8f0;
+      --color-text-muted: #94a3b8;
+      --color-accent: #20b69e;
+      --radius: 12px;
+      --space: 1.5rem;
+      --text-base: clamp(1rem, 2vw, 1.125rem);
+    }
+
     body {
       font-family: 'Inter', sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
+      background: var(--color-bg);
+      color: var(--color-text);
       line-height: 1.7;
     }
 
-  header {
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    gap: 20px;
-  }
+    header {
+      padding: var(--space) clamp(1.5rem, 5vw, 3rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      gap: var(--space);
+    }
 
-  .brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    text-decoration: none;
-    color: #e2e8f0;
-  }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--color-text);
+    }
 
-  .brand:hover {
-    opacity: 0.95;
-  }
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, var(--color-accent), #17917f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(32, 182, 158, 0.2);
+    }
 
-  .brand-mark {
-    width: 46px;
-    height: 46px;
-    border-radius: 14px;
-    background: linear-gradient(180deg, #20b69e, #17917f);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 24px rgba(32, 182, 158, 0.18);
-    flex-shrink: 0;
-  }
+    .brand-mark svg {
+      width: 24px;
+      height: 24px;
+    }
 
-  .brand-mark svg {
-    width: 26px;
-    height: 26px;
-    display: block;
-  }
+    .brand-text {
+      font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+      font-weight: 700;
+      letter-spacing: 0.025em;
+    }
 
-  .brand-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.05;
-  }
+    .brand-name .ai {
+      color: var(--color-accent);
+    }
 
-  .brand-name {
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-    color: #f8fafc;
-  }
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
 
-  .brand-name .ai {
-    color: #20b69e;
-  }
+    nav a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
 
-  .brand-tagline {
-    font-size: 12px;
-    color: #94a3b8;
-    letter-spacing: 0.6px;
-    text-transform: uppercase;
-    margin-top: 4px;
-  }
-
-  .nav {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
+    nav a:hover {
+      color: var(--color-text);
+    }
 
     main {
-      max-width: 900px;
-      margin: auto;
-      padding: 80px 40px;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: clamp(4rem, 10vw, 6rem) clamp(1.5rem, 5vw, 3rem);
     }
 
     .badge {
       display: inline-block;
-      margin-bottom: 16px;
-      font-size: 14px;
-      color: #94a3b8;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
-    h2 {
-      font-size: 38px;
-      margin-bottom: 10px;
+    h1 {
+      font-size: clamp(2rem, 6vw, 3.25rem);
+      margin-bottom: 0.75rem;
+      line-height: 1.1;
     }
 
     .subtitle {
-      color: #94a3b8;
-      margin-bottom: 30px;
+      color: var(--color-text-muted);
+      font-size: clamp(1.125rem, 3vw, 1.5rem);
+      margin-bottom: 3rem;
     }
 
-    .content p {
-      margin-bottom: 14px;
-      color: #cbd5e1;
+    .info-grid {
+      display: grid;
+      gap: 1.5rem;
     }
 
-    .content a {
-      color: #7dd3fc;
+    .info-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: var(--space);
+    }
+
+    .info-label {
+      font-weight: 600;
+      color: var(--color-accent);
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+
+    .info-value {
+      color: var(--color-text);
+      font-size: var(--text-base);
+    }
+
+    .info-value a {
+      color: var(--color-accent);
       text-decoration: none;
     }
 
-    .content a:hover {
+    .info-value a:hover {
       text-decoration: underline;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      color: #64748b;
-      font-size: 14px;
+      padding: 3rem clamp(1.5rem, 5vw, 3rem) 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: var(--color-text-muted);
+      font-size: 0.875rem;
     }
 
     footer a {
-      color: #94a3b8;
-      margin: 0 10px;
+      color: var(--color-text-muted);
       text-decoration: none;
+      margin: 0 0.5rem;
     }
 
-    footer a:hover { color: #fff; }
+    footer a:hover {
+      color: var(--color-accent);
+    }
 
-      @media (max-width: 768px) {
+    @media (max-width: 768px) {
       header {
         flex-direction: column;
-        gap: 14px;
-        padding: 18px 20px;
-      }
-
-      .brand {
-        justify-content: center;
-      }
-
-      .brand-name {
-        font-size: 20px;
+        gap: 1rem;
+        padding: 1.25rem clamp(1rem, 4vw, 1.5rem);
       }
 
       nav {
-        display: flex;
         flex-wrap: wrap;
+        gap: 1rem;
         justify-content: center;
-        gap: 12px;
-      }
-
-      nav a {
-        margin: 0;
       }
 
       main {
-        padding: 60px 20px;
-      }
-
-      h2 {
-        font-size: 30px;
+        padding: 3rem clamp(1rem, 4vw, 1.5rem) 2rem;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <header>
     <a href="index.html" class="brand" aria-label="TurnAI kezdőlap">
       <div class="brand-mark">
         <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -190,28 +201,43 @@
       </div>
       <div class="brand-text">
         <span class="brand-name">Turn<span class="ai">AI</span></span>
-        <span class="brand-tagline">automatizálás · integráció · ai</span>
       </div>
     </a>
     <nav>
       <a href="index.html">Kezdőlap</a>
       <a href="index.html#szolgaltatasok">Szolgáltatások</a>
       <a href="adatvedelem.html">Adatvédelem</a>
-      <a href="impresszum.html">Impresszum</a>
     </nav>
   </header>
 
   <main>
     <div class="badge">📄 Impresszum</div>
-    <h2>Impresszum</h2>
+    <h1>Impresszum</h1>
     <p class="subtitle">Írás</p>
 
-    <div class="content">
-      <p><strong>Név:</strong> Turnai András Levente</p>
-      <p><strong>Székhely:</strong> 1064 Budapest, Vörösmarty utca 73.</p>
-      <p><strong>E-mail:</strong> <a href="mailto:turnai.andras@gmail.com">turnai.andras@gmail.com</a></p>
-      <p><strong>Tevékenység:</strong> AI automatizációs szolgáltatások nyújtása</p>
-      <p>Az oldalon megjelenő tartalmak szerzői jogi védelem alatt állnak. Azok másolása, terjesztése kizárólag a tulajdonos előzetes írásbeli engedélyével lehetséges.</p>
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="info-label">Név</div>
+        <div class="info-value">Turnai András Levente</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Székhely</div>
+        <div class="info-value">1064 Budapest, Vörösmarty utca 73.</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">E-mail</div>
+        <div class="info-value"><a href="mailto:turnai.andras@gmail.com">turnai.andras@gmail.com</a></div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Tevékenység</div>
+        <div class="info-value">AI automatizációs szolgáltatások nyújtása</div>
+      </div>
+    </div>
+
+    <div class="info-item" style="margin-top: 2rem;">
+      <div class="info-value">
+        Az oldalon megjelenő tartalmak szerzői jogi védelem alatt állnak. Azok másolása, terjesztése kizárólag a tulajdonos előzetes írásbeli engedélyével lehetséges.
+      </div>
     </div>
   </main>
 
