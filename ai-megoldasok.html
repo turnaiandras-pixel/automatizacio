@@ -4,147 +4,268 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI megoldások</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
-      line-height: 1.7;
-    }
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    line-height: 1.7;
+  }
+
+  header {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  header h1 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav a,
+  .dropbtn {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .nav a:hover,
+  .dropbtn:hover {
+    color: #fff;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 240px;
+    background: #1e293b;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 10px 0;
+    z-index: 1000;
+  }
+
+  .dropdown-content a {
+    display: block;
+    padding: 10px 16px;
+    color: #cbd5e1;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .dropdown-content a:hover {
+    background: #334155;
+    color: #fff;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 40px 80px;
+  }
+
+  .hero-card {
+    background: linear-gradient(180deg, rgba(30,41,59,0.95), rgba(15,23,42,0.95));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 48px;
+    margin-bottom: 36px;
+  }
+
+  .badge {
+    display: inline-block;
+    margin-bottom: 18px;
+    font-size: 14px;
+    color: #20b69e;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  h2 {
+    font-size: 52px;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    color: #f8fafc;
+  }
+
+  .subtitle {
+    color: #94a3b8;
+    font-size: 22px;
+    line-height: 1.6;
+    max-width: 850px;
+    margin-bottom: 28px;
+  }
+
+  .lead {
+    color: #cbd5e1;
+    font-size: 18px;
+    max-width: 900px;
+    margin-bottom: 16px;
+  }
+
+  .section-card {
+    background: #111c31;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 18px;
+    padding: 36px;
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-size: 28px;
+    margin-bottom: 14px;
+    color: #f8fafc;
+  }
+
+  p {
+    margin-bottom: 16px;
+    color: #cbd5e1;
+  }
+
+  ul {
+    padding-left: 20px;
+    margin-bottom: 0;
+  }
+
+  li {
+    margin-bottom: 10px;
+    color: #cbd5e1;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.25s ease;
+  }
+
+  .btn-primary {
+    background: #20b69e;
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background: #1ca08a;
+  }
+
+  .btn-secondary {
+    border: 1px solid rgba(255,255,255,0.16);
+    color: #e2e8f0;
+    background: transparent;
+  }
+
+  .btn-secondary:hover {
+    background: #1e293b;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #64748b;
+    font-size: 14px;
+  }
+
+  footer a {
+    color: #94a3b8;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
     header {
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      flex-direction: column;
+      gap: 12px;
     }
-    header h1 {
-      font-size: 20px;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
+
     .nav {
-      display: flex;
-      align-items: center;
-      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
-    .nav a,
-    .dropbtn {
-      color: #94a3b8;
-      text-decoration: none;
-      font-size: 14px;
+
+    .nav a {
+      margin: 0 10px;
     }
-    .nav a:hover,
-    .dropbtn:hover {
-      color: #fff;
-    }
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
+
     .dropdown-content {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 240px;
-      background: #1e293b;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 10px;
-      padding: 10px 0;
-      z-index: 1000;
+      position: static;
+      margin-top: 8px;
     }
-    .dropdown-content a {
-      display: block;
-      padding: 10px 16px;
-      color: #cbd5e1;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    .dropdown-content a:hover {
-      background: #334155;
-      color: #fff;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
+
     main {
-      max-width: 900px;
-      margin: auto;
-      padding: 80px 40px;
+      padding: 32px 20px 60px;
     }
-    .badge {
-      display: inline-block;
-      margin-bottom: 16px;
-      font-size: 14px;
-      color: #94a3b8;
+
+    .hero-card,
+    .section-card {
+      padding: 28px 22px;
+      border-radius: 16px;
     }
+
     h2 {
-      font-size: 38px;
-      margin-bottom: 10px;
+      font-size: 36px;
     }
+
     .subtitle {
-      color: #94a3b8;
-      margin-bottom: 30px;
+      font-size: 18px;
     }
-    p {
-      margin-bottom: 16px;
-      color: #cbd5e1;
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
     }
+
+    .btn {
+      text-align: center;
+    }
+
     h3 {
       font-size: 24px;
-      margin-top: 28px;
-      margin-bottom: 12px;
-      color: #f8fafc;
     }
-    ul {
-      padding-left: 20px;
-      margin-bottom: 20px;
-    }
-    li {
-      margin-bottom: 8px;
-      color: #cbd5e1;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      color: #64748b;
-      font-size: 14px;
-    }
-    footer a {
-      color: #94a3b8;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-    footer a:hover {
-      color: #fff;
-    }
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 12px;
-      }
-      .nav {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .nav a {
-        margin: 0 10px;
-      }
-      .dropdown-content {
-        position: static;
-        margin-top: 8px;
-      }
-      main {
-        padding: 60px 20px;
-      }
-      h2 {
-        font-size: 30px;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
   <header>
@@ -164,15 +285,27 @@
     </nav>
   </header>
 
-  <main>
+<main>
+  <section class="hero-card">
     <div class="badge">🤖 Szolgáltatás</div>
-    <h2>AI megoldások</h2>
-    <p class="subtitle">Mesterséges intelligencia üzleti folyamatokra.</p>
+    <h2>AI megoldások cégeknek</h2>
+    <p class="subtitle">
+      Olyan AI-alapú megoldásokat építünk, amelyek valódi segítséget adnak a napi működésben,
+      gyorsítják az információkezelést és csökkentik a kézi munkát.
+    </p>
 
-    <p>Az AI megoldások célja, hogy a mesterséges intelligencia valódi gyakorlati segítséget nyújtson a napi működésben. Ilyen lehet chatbot, dokumentumfeldolgozás, automatikus válaszadás vagy belső tudásbázisra épülő asszisztens.</p>
+    <p class="lead">
+      Az AI használható ügyfélkommunikáció támogatására, dokumentumok feldolgozására,
+      gyakori kérdések kezelésére vagy belső tudásbázisokra épülő asszisztensek létrehozására.
+    </p>
 
-    <p>Az AI segíthet gyorsabban kezelni az információkat, csökkenteni a kézi munkát, és támogatni az ügyfélkommunikációt vagy a belső folyamatokat.</p>
+    <p class="lead">
+      A cél nem az öncélú technológia, hanem az, hogy a mesterséges intelligencia
+      ténylegesen gyorsabbá és hatékonyabbá tegye a működést.
+    </p>
+  </section>
 
+  <section class="section-card">
     <h3>Miben segít?</h3>
     <ul>
       <li>AI chatbotok és asszisztensek</li>
@@ -181,10 +314,29 @@
       <li>Gyorsabb információkezelés</li>
       <li>Hatékonyabb ügyfélkommunikáció</li>
     </ul>
+  </section>
 
-    <h3>Példák</h3>
-    <p>Egy AI rendszer automatikusan megválaszolhat gyakori kérdéseket, összefoglalhat e-maileket, segíthet dokumentumokban keresni, vagy előszűrheti a beérkező megkereséseket.</p>
-  </main>
+  <section class="section-card">
+    <h3>Hogyan néz ki a gyakorlatban?</h3>
+    <p>
+      Egy AI rendszer automatikusan megválaszolhat gyakori kérdéseket, összefoglalhat e-maileket,
+      segíthet dokumentumokban keresni, vagy előszűrheti a beérkező megkereséseket.
+    </p>
+  </section>
+
+  <section class="section-card">
+    <h3>Beszéljünk az AI lehetőségekről</h3>
+    <p>
+      Ha szeretnéd megnézni, hogy a mesterséges intelligencia hol tud valódi üzleti előnyt adni,
+      írj egy üzenetet, és nézzük meg, milyen megoldás illik a céged működéséhez.
+    </p>
+
+    <div class="hero-actions">
+      <a href="mailto:turnai.andras@gmail.com" class="btn btn-primary">Konzultáció kérése</a>
+      <a href="folyamatautomatizalas.html" class="btn btn-secondary">Folyamatautomatizálás megtekintése</a>
+    </div>
+  </section>
+</main>
 
   <footer>
     © 2026 Automatizáció |
