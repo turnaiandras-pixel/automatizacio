@@ -275,7 +275,32 @@
       color: #fff;
       text-decoration: underline;
     }
+.section-intro {
+  max-width: 700px;
+  color: #94a3b8;
+  margin-bottom: 32px;
+}
 
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.info-box {
+  background: #1e293b;
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.info-box h4 {
+  margin-bottom: 10px;
+  color: #f8fafc;
+}
+
+.info-box p {
+  color: #94a3b8;
+}
     footer {
       text-align: center;
       padding: 20px;
@@ -380,7 +405,30 @@
       </div>
     </div>
   </section>
+  <section class="section">
+    <h3>Hogyan dolgozunk?</h3>
+    <p class="section-intro">
+      Letisztult, átlátható folyamat mentén dolgozunk, hogy gyorsan kiderüljön,
+      hol lehet valódi időt és kapacitást megtakarítani.
+    </p>
 
+    <div class="info-grid">
+      <div class="info-box">
+        <h4>1. Felmérés</h4>
+        <p>Átnézzük a jelenlegi folyamataidat, az ismétlődő feladatokat és az elakadásokat.</p>
+      </div>
+
+      <div class="info-box">
+        <h4>2. Tervezés</h4>
+        <p>Megtervezzük az automatizációt, az integrációkat és a legjobb technikai megoldást.</p>
+      </div>
+
+      <div class="info-box">
+        <h4>3. Bevezetés</h4>
+        <p>Megvalósítjuk, teszteljük és finomhangoljuk a rendszert a stabil működéshez.</p>
+      </div>
+    </div>
+  </section>
   <footer>
     © 2026 Automatizáció |
     <a href="adatvedelem.html">Adatvédelem</a> |
