@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Automatizáció</title>
+  <title>TurnAI | AI automatizáció vállalkozásoknak</title>
 
   <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 
@@ -11,7 +11,7 @@
     :root {
       --chat--color--primary: #e74266;
       --chat--color--primary-shade-50: #db4061;
-      --chat--color--primary-shade-100: #cf3c5c;
+      --chat--color--primary--shade-100: #cf3c5c;
       --chat--color--secondary: #20b69e;
       --chat--color-secondary-shade-50: #1ca08a;
       --chat--color-white: #fff;
@@ -25,7 +25,7 @@
       --chat--spacing: 1rem;
       --chat--border-radius: 0.25rem;
       --chat--transition-duration: 0.15s;
-      --chat--font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+      --chat--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
       --chat--window--width: 400px;
       --chat--window--height: 600px;
@@ -33,12 +33,12 @@
       --chat--window--right: var(--chat--spacing);
       --chat--window--z-index: 9999;
       --chat--window--border: 1px solid var(--chat--color-light-shade-50);
-      --chat--window--border-radius: var(--chat--border-radius);
+      --chat--window--border-radius: 18px;
       --chat--window--margin-bottom: var(--chat--spacing);
 
       --chat--header-height: auto;
       --chat--header--padding: var(--chat--spacing);
-      --chat--header--background: var(--chat--color-dark);
+      --chat--header--background: #0f172a;
       --chat--header--color: var(--chat--color-light);
       --chat--header--border-top: none;
       --chat--header--border-bottom: none;
@@ -46,12 +46,12 @@
       --chat--header--border-right: none;
 
       --chat--heading--font-size: 2em;
-      --chat--subtitle--font-size: inherit;
-      --chat--subtitle--line-height: 1.8;
+      --chat--subtitle--font-size: 0.95rem;
+      --chat--subtitle--line-height: 1.6;
 
       --chat--message--font-size: 1rem;
       --chat--message--padding: var(--chat--spacing);
-      --chat--message--border-radius: var(--chat--border-radius);
+      --chat--message--border-radius: 14px;
       --chat--message-line-height: 1.5;
       --chat--message--margin-bottom: calc(var(--chat--spacing) * 1);
 
@@ -72,7 +72,7 @@
       --chat--toggle--border-radius: 50%;
       --chat--toggle--background: var(--chat--color--primary);
       --chat--toggle--hover--background: var(--chat--color--primary-shade-50);
-      --chat--toggle--active--background: var(--chat--color--primary-shade-100);
+      --chat--toggle--active--background: var(--chat--color--primary--shade-100);
       --chat--toggle--color: var(--chat--color-white);
 
       --chat--textarea--height: 50px;
@@ -82,14 +82,14 @@
       --chat--input--border-radius: 0;
       --chat--input--padding: 0.8rem;
       --chat--input--background: var(--chat--color-white);
-      --chat--input--text-color: initial;
+      --chat--input--text-color: #0f172a;
       --chat--input--line-height: 1.5;
       --chat--input--placeholder--font-size: var(--chat--input--font-size);
       --chat--input--border-active: 0;
       --chat--input--left--panel--width: 2rem;
 
       --chat--button--padding: calc(var(--chat--spacing) * 0.5) var(--chat--spacing);
-      --chat--button--border-radius: var(--chat--border-radius);
+      --chat--button--border-radius: 12px;
       --chat--button--font-size: 1rem;
       --chat--button--line-height: 1;
       --chat--button--color--primary: var(--chat--color-light);
@@ -98,33 +98,12 @@
       --chat--button--color--primary--hover: var(--chat--color-light);
       --chat--button--background--primary--hover: var(--chat--color-secondary-shade-50);
       --chat--button--border--primary--hover: none;
-      --chat--button--color--primary--disabled: var(--chat--color-light);
-      --chat--button--background--primary--disabled: #81bbb1;
-      --chat--button--border--primary--disabled: none;
-
-      --chat--button--color--secondary: var(--chat--color-light);
-      --chat--button--background--secondary: hsl(0, 0%, 58%);
-      --chat--button--border--secondary: none;
-      --chat--button--color--secondary--hover: var(--chat--color-light);
-      --chat--button--background--secondary--hover: hsl(0, 0%, 51%);
-      --chat--button--border--secondary--hover: none;
-      --chat--button--color--secondary--disabled: var(--chat--color-light);
-      --chat--button--background--secondary--disabled: hsl(0, 0%, 78%);
-      --chat--button--border--secondary--disabled: none;
 
       --chat--close--button--color-hover: var(--chat--color--primary);
-
       --chat--input--send--button--background: var(--chat--color-white);
       --chat--input--send--button--color: var(--chat--color--secondary);
       --chat--input--send--button--background-hover: var(--chat--color--primary-shade-50);
       --chat--input--send--button--color-hover: var(--chat--color-secondary-shade-50);
-
-      --chat--input--file--button--background: var(--chat--color-white);
-      --chat--input--file--button--color: var(--chat--color--secondary);
-      --chat--input--file--button--background-hover: var(--chat--input--file--button--background);
-      --chat--input--file--button--color-hover: var(--chat--color-secondary-shade-50);
-
-      --chat--files-spacing: 0.25rem;
 
       --chat--body--background: var(--chat--color-light);
       --chat--footer--background: var(--chat--color-light);
@@ -135,6 +114,10 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -150,6 +133,63 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid rgba(255,255,255,0.1);
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: #e2e8f0;
+      flex-shrink: 0;
+    }
+
+    .brand:hover {
+      opacity: 0.96;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #20b69e, #17917f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 24px rgba(32, 182, 158, 0.18);
+      flex-shrink: 0;
+    }
+
+    .brand-mark svg {
+      width: 26px;
+      height: 26px;
+      display: block;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .brand-name {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      color: #f8fafc;
+    }
+
+    .brand-name .ai {
+      color: #20b69e;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color: #94a3b8;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      margin-top: 4px;
     }
 
     .nav {
@@ -208,24 +248,26 @@
     }
 
     .hero {
-      height: 80vh;
+      min-height: 72vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 20px;
+      padding: 80px 20px 40px;
     }
 
     .hero h2 {
-      font-size: 48px;
+      font-size: 56px;
       margin-bottom: 20px;
+      max-width: 980px;
+      line-height: 1.1;
     }
 
     .hero p {
-      font-size: 18px;
+      font-size: 19px;
       color: #94a3b8;
-      max-width: 600px;
+      max-width: 780px;
     }
 
     .section {
@@ -425,19 +467,25 @@
       background: #ffffff !important;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       header {
         flex-direction: column;
-        gap: 12px;
+        gap: 14px;
+        padding: 18px 20px;
+      }
+
+      .brand {
+        justify-content: center;
+      }
+
+      .brand-name {
+        font-size: 20px;
       }
 
       .nav {
         flex-wrap: wrap;
         justify-content: center;
-      }
-
-      .nav a {
-        margin: 0 10px;
+        gap: 12px;
       }
 
       .dropdown-content {
@@ -445,8 +493,17 @@
         margin-top: 8px;
       }
 
+      .hero {
+        min-height: 58vh;
+        padding-top: 60px;
+      }
+
       .hero h2 {
-        font-size: 36px;
+        font-size: 38px;
+      }
+
+      .hero p {
+        font-size: 17px;
       }
 
       .section {
@@ -468,40 +525,40 @@
   </style>
 </head>
 <body>
-<header>
-  <a href="index.html" class="brand" aria-label="TurnAI kezdőlap">
-    <div class="brand-mark">
-      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M20 20C20 20 28 20 34 20C42 20 46 24 46 32C46 40 42 44 34 44H22" stroke="#0F172A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M22 20H18" stroke="#0F172A" stroke-width="5" stroke-linecap="round"/>
-        <path d="M22 44H18" stroke="#0F172A" stroke-width="5" stroke-linecap="round"/>
-        <circle cx="18" cy="20" r="4" fill="#0F172A"/>
-        <circle cx="18" cy="44" r="4" fill="#0F172A"/>
-        <circle cx="46" cy="32" r="4" fill="#0F172A"/>
-      </svg>
-    </div>
-    <div class="brand-text">
-      <span class="brand-name">Turn<span class="ai">AI</span></span>
-      <span class="brand-tagline">automatizálás · integráció · ai</span>
-    </div>
-  </a>
-
-  <nav class="nav">
-    <a href="index.html">Kezdőlap</a>
-
-    <div class="dropdown">
-      <a href="javascript:void(0)" class="dropbtn">Szolgáltatások</a>
-      <div class="dropdown-content">
-        <a href="folyamatautomatizalas.html">Folyamatautomatizálás</a>
-        <a href="integraciok.html">Integrációk</a>
-        <a href="ai-megoldasok.html">AI megoldások</a>
+  <header>
+    <a href="index.html" class="brand" aria-label="TurnAI kezdőlap">
+      <div class="brand-mark">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M20 20C20 20 28 20 34 20C42 20 46 24 46 32C46 40 42 44 34 44H22" stroke="#0F172A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M22 20H18" stroke="#0F172A" stroke-width="5" stroke-linecap="round"/>
+          <path d="M22 44H18" stroke="#0F172A" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="18" cy="20" r="4" fill="#0F172A"/>
+          <circle cx="18" cy="44" r="4" fill="#0F172A"/>
+          <circle cx="46" cy="32" r="4" fill="#0F172A"/>
+        </svg>
       </div>
-    </div>
+      <div class="brand-text">
+        <span class="brand-name">Turn<span class="ai">AI</span></span>
+        <span class="brand-tagline">automatizálás · integráció · ai</span>
+      </div>
+    </a>
 
-    <a href="adatvedelem.html">Adatvédelem</a>
-    <a href="impresszum.html">Impresszum</a>
-  </nav>
-</header>
+    <nav class="nav">
+      <a href="index.html">Kezdőlap</a>
+
+      <div class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Szolgáltatások</a>
+        <div class="dropdown-content">
+          <a href="folyamatautomatizalas.html">Folyamatautomatizálás</a>
+          <a href="integraciok.html">Integrációk</a>
+          <a href="ai-megoldasok.html">AI megoldások</a>
+        </div>
+      </div>
+
+      <a href="adatvedelem.html">Adatvédelem</a>
+      <a href="impresszum.html">Impresszum</a>
+    </nav>
+  </header>
 
   <section class="hero">
     <h2>AI automatizáció vállalkozásoknak</h2>
@@ -568,6 +625,11 @@
         </div>
       </div>
 
+      <p class="pilot-note">
+        Szívesen megmutatom egy rövid, 15 perces online beszélgetésben, hogyan
+        működne ez az Önök weboldalán.
+      </p>
+
       <div class="pilot-actions">
         <a class="pilot-cta" href="mailto:turnai.andras@gmail.com?subject=Gyors%20egyeztet%C3%A9s%20AI%20pilot%20kapcs%C3%A1n">
           Kérek egy gyors egyeztetést
@@ -588,7 +650,7 @@
       </div>
       <div class="card">
         <h4><a href="integraciok.html">Integrációk</a></h4>
-        <p>Rendszerek összekapcsolása hatékony workflow érdekben.</p>
+        <p>Rendszerek összekapcsolása hatékony workflow érdekében.</p>
       </div>
       <div class="card">
         <h4><a href="ai-megoldasok.html">AI megoldások</a></h4>
@@ -598,7 +660,7 @@
   </section>
 
   <footer>
-    © 2026 Automatizáció
+    © 2026 TurnAI
     <a href="adatvedelem.html">Adatvédelem</a>
     <a href="impresszum.html">Impresszum</a>
   </footer>
@@ -606,33 +668,33 @@
   <div id="n8n-chat"></div>
 
   <script type="module">
-    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+    import { createChat } from "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js";
 
     createChat({
-      webhookUrl: 'https://n8n-2-5jna.onrender.com/webhook/b80d57ee-fc95-42de-8a57-dad2c5db98ce/chat',
+      webhookUrl: "https://n8n-2-5jna.onrender.com/webhook/b80d57ee-fc95-42de-8a57-dad2c5db98ce/chat",
       webhookConfig: {
-        method: 'POST',
+        method: "POST",
         headers: {}
       },
-      target: '#n8n-chat',
-      mode: 'window',
-      chatInputKey: 'chatInput',
-      chatSessionKey: 'sessionId',
+      target: "#n8n-chat",
+      mode: "window",
+      chatInputKey: "chatInput",
+      chatSessionKey: "sessionId",
       loadPreviousSession: true,
       metadata: {},
       showWelcomeScreen: false,
-      defaultLanguage: 'en',
+      defaultLanguage: "en",
       initialMessages: [
-        'Szia!',
-        'Én egy AI automatizált chat vagyok! Miben segíthetek neked?'
+        "Szia!",
+        "Én egy AI automatizált chat vagyok! Miben segíthetek neked?"
       ],
       i18n: {
         en: {
-          title: 'Szia! 👋',
-          subtitle: 'Itt vagyok 24/7.',
-          footer: '',
-          getStarted: 'Új beszélgetés',
-          inputPlaceholder: 'Mit szeretnél tudni?'
+          title: "Szia! 👋",
+          subtitle: "Itt vagyok 24/7.",
+          footer: "",
+          getStarted: "Új beszélgetés",
+          inputPlaceholder: "Mit szeretnél tudni?"
         }
       },
       enableStreaming: false
