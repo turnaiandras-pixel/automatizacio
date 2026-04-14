@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://turnaiandras-pixel.github.io/automatizacio/sitemap.xml
