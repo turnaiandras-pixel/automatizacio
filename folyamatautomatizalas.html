@@ -6,7 +6,111 @@
   <title>Folyamatautomatizálás cégeknek | TurnAI</title>
   <meta name="description" content="Folyamatautomatizálás cégeknek: ismétlődő adminisztráció, adatkezelés és üzleti folyamatok automatizálása a gyorsabb, átláthatóbb működésért." />
 
+  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
   <style>
+    :root {
+      --chat--color--primary: #e74266;
+      --chat--color--primary-shade-50: #db4061;
+      --chat--color--primary--shade-100: #cf3c5c;
+      --chat--color--secondary: #20b69e;
+      --chat--color-secondary-shade-50: #1ca08a;
+      --chat--color-white: #fff;
+      --chat--color-light: #f2f4f8;
+      --chat--color-light-shade-50: #e6e9f1;
+      --chat--color-light-shade-100: #c2c5cc;
+      --chat--color-medium: #d2d4d9;
+      --chat--color-dark: #101330;
+      --chat--color-disabled: #d2d4d9;
+      --chat--color-typing: #404040;
+      --chat--spacing: 1rem;
+      --chat--border-radius: 0.25rem;
+      --chat--transition-duration: 0.15s;
+      --chat--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+      --chat--window--width: 400px;
+      --chat--window--height: 600px;
+      --chat--window--bottom: var(--chat--spacing);
+      --chat--window--right: var(--chat--spacing);
+      --chat--window--z-index: 9999;
+      --chat--window--border: 1px solid var(--chat--color-light-shade-50);
+      --chat--window--border-radius: 18px;
+      --chat--window--margin-bottom: var(--chat--spacing);
+
+      --chat--header-height: auto;
+      --chat--header--padding: var(--chat--spacing);
+      --chat--header--background: #0f172a;
+      --chat--header--color: var(--chat--color-light);
+      --chat--header--border-top: none;
+      --chat--header--border-bottom: none;
+      --chat--header--border-left: none;
+      --chat--header--border-right: none;
+
+      --chat--heading--font-size: 2em;
+      --chat--subtitle--font-size: 0.95rem;
+      --chat--subtitle--line-height: 1.6;
+
+      --chat--message--font-size: 1rem;
+      --chat--message--padding: var(--chat--spacing);
+      --chat--message--border-radius: 14px;
+      --chat--message-line-height: 1.5;
+      --chat--message--margin-bottom: calc(var(--chat--spacing) * 1);
+
+      --chat--message--bot--background: #f1f5f9;
+      --chat--message--bot--color: #0f172a;
+      --chat--message--bot--border: 1px solid #dbe2ea;
+
+      --chat--message--user--background: #0f172a;
+      --chat--message--user--color: #ffffff;
+      --chat--message--user--border: 1px solid #0f172a;
+
+      --chat--message--pre--background: rgba(0, 0, 0, 0.05);
+      --chat--messages-list--padding: var(--chat--spacing);
+
+      --chat--toggle--size: 64px;
+      --chat--toggle--width: var(--chat--toggle--size);
+      --chat--toggle--height: var(--chat--toggle--size);
+      --chat--toggle--border-radius: 50%;
+      --chat--toggle--background: var(--chat--color--primary);
+      --chat--toggle--hover--background: var(--chat--color--primary-shade-50);
+      --chat--toggle--active--background: var(--chat--color--primary--shade-100);
+      --chat--toggle--color: var(--chat--color-white);
+
+      --chat--textarea--height: 50px;
+      --chat--chattextarea--max-height: 30rem;
+      --chat--input--font-size: inherit;
+      --chat--input--border: 0;
+      --chat--input--border-radius: 0;
+      --chat--input--padding: 0.8rem;
+      --chat--input--background: var(--chat--color-white);
+      --chat--input--text-color: #0f172a;
+      --chat--input--line-height: 1.5;
+      --chat--input--placeholder--font-size: var(--chat--input--font-size);
+      --chat--input--border-active: 0;
+      --chat--input--left--panel--width: 2rem;
+
+      --chat--button--padding: calc(var(--chat--spacing) * 0.5) var(--chat--spacing);
+      --chat--button--border-radius: 12px;
+      --chat--button--font-size: 1rem;
+      --chat--button--line-height: 1;
+      --chat--button--color--primary: var(--chat--color-light);
+      --chat--button--background--primary: var(--chat--color--secondary);
+      --chat--button--border--primary: none;
+      --chat--button--color--primary--hover: var(--chat--color-light);
+      --chat--button--background--primary--hover: var(--chat--color-secondary-shade-50);
+      --chat--button--border--primary--hover: none;
+
+      --chat--close--button--color-hover: var(--chat--color--primary);
+      --chat--input--send--button--background: var(--chat--color-white);
+      --chat--input--send--button--color: var(--chat--color--secondary);
+      --chat--input--send--button--background-hover: var(--chat--color--primary-shade-50);
+      --chat--input--send--button--color-hover: var(--chat--color-secondary-shade-50);
+
+      --chat--body--background: var(--chat--color-light);
+      --chat--footer--background: var(--chat--color-light);
+      --chat--footer--color: var(--chat--color-dark);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -176,6 +280,9 @@
 
     .hero-card {
       margin-bottom: 24px;
+      min-height: 52vh;
+      display: flex;
+      align-items: center;
     }
 
     .section-card,
@@ -196,12 +303,12 @@
     }
 
     h2 {
-      font-size: 56px;
+      font-size: 64px;
       line-height: 1.02;
-      margin-bottom: 18px;
+      margin-bottom: 0;
       color: #f8fafc;
       letter-spacing: -0.04em;
-      max-width: 100%;
+      max-width: 820px;
       overflow-wrap: anywhere;
       word-break: break-word;
       hyphens: auto;
@@ -244,7 +351,8 @@
       margin-top: 20px;
     }
 
-    .mini-card {
+    .mini-card,
+    .reason-card {
       background: #1e293b;
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 18px;
@@ -252,49 +360,32 @@
       transition: 0.25s ease;
     }
 
-    .mini-card:hover {
+    .mini-card:hover,
+    .reason-card:hover {
       transform: translateY(-4px);
       background: #334155;
     }
 
-    .mini-card h4 {
+    .mini-card h4,
+    .reason-card h4 {
       font-size: 20px;
       margin-bottom: 12px;
       color: #f8fafc;
     }
 
-    .mini-card p {
+    .mini-card p,
+    .reason-card p {
       font-size: 16px;
       line-height: 1.7;
       color: #94a3b8;
       margin-bottom: 0;
     }
 
-    .bullet-list {
-      list-style: none;
-      padding-left: 0;
-      margin-top: 14px;
-    }
-
-    .bullet-list li {
-      position: relative;
-      padding-left: 20px;
-      font-size: 17px;
-      line-height: 1.75;
-      color: #cbd5e1;
-      margin-bottom: 12px;
-    }
-
-    .bullet-list li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 11px;
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #20b69e;
-      box-shadow: 0 0 0 4px rgba(32, 182, 158, 0.14);
+    .reason-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
     }
 
     .steps {
@@ -394,9 +485,36 @@
       color: #fff;
     }
 
+    #n8n-chat .chat-message-from-bot,
+    #n8n-chat [data-testid="chat-message-bot"] {
+      background: #f1f5f9 !important;
+      color: #0f172a !important;
+      border: 1px solid #dbe2ea !important;
+    }
+
+    #n8n-chat .chat-message-from-user,
+    #n8n-chat [data-testid="chat-message-user"] {
+      background: #0f172a !important;
+      color: #ffffff !important;
+      border: 1px solid #0f172a !important;
+    }
+
+    #n8n-chat .chat-message-from-user *,
+    #n8n-chat [data-testid="chat-message-user"] * {
+      color: #ffffff !important;
+    }
+
+    #n8n-chat .chat-input textarea,
+    #n8n-chat textarea,
+    #n8n-chat input {
+      color: #0f172a !important;
+      background: #ffffff !important;
+    }
+
     @media (max-width: 900px) {
       .cards,
-      .steps {
+      .steps,
+      .reason-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -479,17 +597,19 @@
         border-radius: 18px;
       }
 
+      .hero-card {
+        min-height: 40vh;
+      }
+
       h2 {
-        font-size: 30px;
+        font-size: 34px;
         line-height: 1.08;
         letter-spacing: -0.03em;
-        margin-bottom: 16px;
       }
 
       .subtitle,
       .lead,
-      p,
-      li {
+      p {
         font-size: 17px;
         line-height: 1.75;
       }
@@ -517,9 +637,9 @@
           <path d="M14 14H31" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
           <path d="M14 24H26" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
           <path d="M14 34H22" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
-          ircle cx="34" cy="14" r="3.5" fill="#0F172A"/>
-          ircle cx="29" cy="24" r="3.5" fill="#0F172A"/>
-          ircle cx="25" cy="34" r="3.5" fill="#0F172A"/>
+          <circle cx="34" cy="14" r="3.5" fill="#0F172A"/>
+          <circle cx="29" cy="24" r="3.5" fill="#0F172A"/>
+          <circle cx="25" cy="34" r="3.5" fill="#0F172A"/>
         </svg>
       </div>
       <div class="brand-text">
@@ -549,8 +669,14 @@
 
   <main>
     <section class="hero-card">
-      <span class="badge">Folyamatautomatizálás</span>
-      <h2>Kevesebb ismétlődő feladat. Gyorsabb, átláthatóbb működés.</h2>
+      <div>
+        <span class="badge">Folyamatautomatizálás</span>
+        <h2>Kevesebb ismétlődő feladat. Gyorsabb, átláthatóbb működés.</h2>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h3>Mit jelent ez a gyakorlatban?</h3>
       <p class="subtitle">
         A TurnAI olyan folyamatautomatizálási megoldásokat épít vállalkozásoknak,
         amelyek csökkentik a manuális adminisztrációt, gyorsítják a belső lépéseket,
@@ -560,11 +686,6 @@
         Ha ugyanazokat az adatokat több helyre viszitek fel, kézzel követtek nyomon feladatokat,
         vagy túl sok idő megy el ismétlődő operatív munkára, ott az automatizáció gyorsan valódi értéket tud adni.
       </p>
-
-      <div class="hero-actions">
-        <a href="mailto:info@turnai.co.hu?subject=Folyamatautomatizálás%20kapcsán%20érdeklődöm" class="btn btn-primary">Kérek egyeztetést</a>
-        <a href="integraciok.html" class="btn btn-secondary">Megnézem az integrációkat</a>
-      </div>
     </section>
 
     <section class="section-card">
@@ -591,13 +712,28 @@
 
     <section class="section-card">
       <h3>Mikor érdemes automatizálni?</h3>
-      <ul class="bullet-list">
-        >Ha ugyanazokat a lépéseket újra és újra manuálisan végzitek.</li>
-        >Ha több rendszer között kell adatokat mozgatni.</li>
-        >Ha a belső adminisztráció túl sok időt visz el a napi működésből.</li>
-        >Ha lassú a reakcióidő, mert túl sok kézi lépés van a folyamatban.</li>
-        >Ha szeretnél kevesebb hibával és nagyobb kiszámíthatósággal működni.</li>
-      </ul>
+      <div class="reason-grid">
+        <div class="reason-card">
+          <h4>Ismétlődő kézi lépések</h4>
+          <p>Ha ugyanazokat a műveleteket újra és újra manuálisan végzitek.</p>
+        </div>
+        <div class="reason-card">
+          <h4>Több rendszer használata</h4>
+          <p>Ha gyakran kell adatokat mozgatni különböző eszközök és rendszerek között.</p>
+        </div>
+        <div class="reason-card">
+          <h4>Túl sok belső adminisztráció</h4>
+          <p>Ha a napi működésből aránytalanul sok időt visz el az operatív háttérmunka.</p>
+        </div>
+        <div class="reason-card">
+          <h4>Lassú reakcióidő</h4>
+          <p>Ha a folyamatok túl sok kézi lépés miatt lassan haladnak előre.</p>
+        </div>
+        <div class="reason-card">
+          <h4>Több kiszámíthatóság</h4>
+          <p>Ha kevesebb hibával és rendezettebb működéssel szeretnétek dolgozni.</p>
+        </div>
+      </div>
     </section>
 
     <section class="section-card">
@@ -652,7 +788,7 @@
 
       <div class="hero-actions">
         <a href="mailto:info@turnai.co.hu?subject=Konzultáció%20folyamatautomatizálásról" class="btn btn-primary">Konzultáció kérése</a>
-        <a href="ai-megoldasok.html" class="btn btn-secondary">AI megoldások</a>
+        <a href="integraciok.html" class="btn btn-secondary">Integrációk megtekintése</a>
       </div>
     </section>
   </main>
@@ -662,6 +798,42 @@
     <a href="adatvedelem.html">Adatvédelem</a> |
     <a href="impresszum.html">Impresszum</a>
   </footer>
+
+  <div id="n8n-chat"></div>
+
+  <script type="module">
+    import { createChat } from "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js";
+
+    createChat({
+      webhookUrl: "https://n8n-2-5jna.onrender.com/webhook/b80d57ee-fc95-42de-8a57-dad2c5db98ce/chat",
+      webhookConfig: {
+        method: "POST",
+        headers: {}
+      },
+      target: "#n8n-chat",
+      mode: "window",
+      chatInputKey: "chatInput",
+      chatSessionKey: "sessionId",
+      loadPreviousSession: true,
+      metadata: {},
+      showWelcomeScreen: false,
+      defaultLanguage: "en",
+      initialMessages: [
+        "Szia!",
+        "Én egy AI automatizált chat vagyok! Miben segíthetek neked?"
+      ],
+      i18n: {
+        en: {
+          title: "Szia! 👋",
+          subtitle: "Itt vagyok 24/7.",
+          footer: "",
+          getStarted: "Új beszélgetés",
+          inputPlaceholder: "Mit szeretnél tudni?"
+        }
+      },
+      enableStreaming: false
+    });
+  </script>
 
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
