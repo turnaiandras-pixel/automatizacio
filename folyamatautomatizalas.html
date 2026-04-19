@@ -34,12 +34,12 @@
       --chat--window--right: var(--chat--spacing);
       --chat--window--z-index: 9999;
       --chat--window--border: 1px solid var(--chat--color-light-shade-50);
-      --chat--window--border-radius: 18px;
+      --chat--window--border-radius: var(--chat--border-radius);
       --chat--window--margin-bottom: var(--chat--spacing);
 
       --chat--header-height: auto;
       --chat--header--padding: var(--chat--spacing);
-      --chat--header--background: #0f172a;
+      --chat--header--background: var(--chat--color-dark);
       --chat--header--color: var(--chat--color-light);
       --chat--header--border-top: none;
       --chat--header--border-bottom: none;
@@ -47,22 +47,22 @@
       --chat--header--border-right: none;
 
       --chat--heading--font-size: 2em;
-      --chat--subtitle--font-size: 0.95rem;
-      --chat--subtitle--line-height: 1.6;
+      --chat--subtitle--font-size: inherit;
+      --chat--subtitle--line-height: 1.8;
 
       --chat--message--font-size: 1rem;
       --chat--message--padding: var(--chat--spacing);
-      --chat--message--border-radius: 14px;
+      --chat--message--border-radius: var(--chat--border-radius);
       --chat--message-line-height: 1.5;
       --chat--message--margin-bottom: calc(var(--chat--spacing) * 1);
 
-      --chat--message--bot--background: #f1f5f9;
-      --chat--message--bot--color: #0f172a;
-      --chat--message--bot--border: 1px solid #dbe2ea;
+      --chat--message--bot--background: var(--chat--color-white);
+      --chat--message--bot--color: var(--chat--color-dark);
+      --chat--message--bot--border: none;
 
-      --chat--message--user--background: #0f172a;
-      --chat--message--user--color: #ffffff;
-      --chat--message--user--border: 1px solid #0f172a;
+      --chat--message--user--background: var(--chat--color--secondary);
+      --chat--message--user--color: var(--chat--color-white);
+      --chat--message--user--border: none;
 
       --chat--message--pre--background: rgba(0, 0, 0, 0.05);
       --chat--messages-list--padding: var(--chat--spacing);
@@ -83,14 +83,14 @@
       --chat--input--border-radius: 0;
       --chat--input--padding: 0.8rem;
       --chat--input--background: var(--chat--color-white);
-      --chat--input--text-color: #0f172a;
+      --chat--input--text-color: initial;
       --chat--input--line-height: 1.5;
       --chat--input--placeholder--font-size: var(--chat--input--font-size);
       --chat--input--border-active: 0;
       --chat--input--left--panel--width: 2rem;
 
       --chat--button--padding: calc(var(--chat--spacing) * 0.5) var(--chat--spacing);
-      --chat--button--border-radius: 12px;
+      --chat--button--border-radius: var(--chat--border-radius);
       --chat--button--font-size: 1rem;
       --chat--button--line-height: 1;
       --chat--button--color--primary: var(--chat--color-light);
@@ -99,13 +99,33 @@
       --chat--button--color--primary--hover: var(--chat--color-light);
       --chat--button--background--primary--hover: var(--chat--color-secondary-shade-50);
       --chat--button--border--primary--hover: none;
+      --chat--button--color--primary--disabled: var(--chat--color-light);
+      --chat--button--background--primary--disabled: #81bbb1;
+      --chat--button--border--primary--disabled: none;
+
+      --chat--button--color--secondary: var(--chat--color-light);
+      --chat--button--background--secondary: hsl(0, 0%, 58%);
+      --chat--button--border--secondary: none;
+      --chat--button--color--secondary--hover: var(--chat--color-light);
+      --chat--button--background--secondary--hover: hsl(0, 0%, 51%);
+      --chat--button--border--secondary--hover: none;
+      --chat--button--color--secondary--disabled: var(--chat--color-light);
+      --chat--button--background--secondary--disabled: hsl(0, 0%, 78%);
+      --chat--button--border--secondary--disabled: none;
 
       --chat--close--button--color-hover: var(--chat--color--primary);
+
       --chat--input--send--button--background: var(--chat--color-white);
       --chat--input--send--button--color: var(--chat--color--secondary);
       --chat--input--send--button--background-hover: var(--chat--color--primary-shade-50);
       --chat--input--send--button--color-hover: var(--chat--color-secondary-shade-50);
 
+      --chat--input--file--button--background: var(--chat--color-white);
+      --chat--input--file--button--color: var(--chat--color--secondary);
+      --chat--input--file--button--background-hover: var(--chat--color-white);
+      --chat--input--file--button--color-hover: var(--chat--color-secondary-shade-50);
+
+      --chat--files-spacing: 0.25rem;
       --chat--body--background: var(--chat--color-light);
       --chat--footer--background: var(--chat--color-light);
       --chat--footer--color: var(--chat--color-dark);
@@ -126,7 +146,7 @@
     }
 
     body {
-      font-family: Inter, sans-serif;
+      font-family: 'Inter', sans-serif;
       background: #0f172a;
       color: #e2e8f0;
       line-height: 1.7;
@@ -151,10 +171,6 @@
       color: #e2e8f0;
       min-width: 0;
       flex-shrink: 0;
-    }
-
-    .brand:hover {
-      opacity: 0.96;
     }
 
     .brand-mark {
@@ -271,9 +287,9 @@
     }
 
     main {
-      max-width: 1100px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 56px 20px 80px;
+      padding: 28px 20px 80px;
     }
 
     .hero-card,
@@ -281,53 +297,55 @@
     .cta-card {
       background: #162033;
       border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 24px;
+      border-radius: 28px;
       padding: 32px;
       box-shadow: 0 20px 60px rgba(0,0,0,0.18);
       overflow: hidden;
     }
 
     .hero-card {
-      margin-bottom: 24px;
-      min-height: 52vh;
+      margin-bottom: 18px;
+      min-height: 36vh;
       display: flex;
       align-items: center;
-      background: linear-gradient(180deg, #111827, #0f172a);
+      background:
+        radial-gradient(circle at top left, rgba(32,182,158,0.10), transparent 32%),
+        linear-gradient(180deg, #0f172a, #0b1220);
     }
 
-    .section-card,
-    .cta-card {
-      margin-top: 24px;
+    .hero-inner {
+      max-width: 840px;
     }
 
     .badge {
       display: inline-block;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       font-size: 14px;
       font-weight: 700;
       color: #5eead4;
       background: rgba(32, 182, 158, 0.12);
-      padding: 8px 12px;
+      padding: 8px 14px;
       border-radius: 999px;
       letter-spacing: 0.2px;
     }
 
     h2 {
-      font-size: 64px;
-      line-height: 1.02;
-      margin-bottom: 0;
+      font-size: 72px;
+      line-height: 0.96;
+      margin-bottom: 18px;
       color: #f8fafc;
-      letter-spacing: -0.04em;
-      max-width: 760px;
+      letter-spacing: -0.05em;
+      max-width: 900px;
       overflow-wrap: anywhere;
       word-break: break-word;
       hyphens: auto;
     }
 
     h3 {
-      font-size: 28px;
+      font-size: 30px;
       margin-bottom: 14px;
       color: #f8fafc;
+      letter-spacing: -0.02em;
     }
 
     h4 {
@@ -342,87 +360,124 @@
       max-width: 100%;
     }
 
-    .subtitle {
-      font-size: 21px;
-      line-height: 1.7;
-      color: #94a3b8;
-      margin-bottom: 22px;
-      max-width: 780px;
-    }
-
-    .lead {
-      font-size: 18px;
-      line-height: 1.8;
-      color: #cbd5e1;
-      margin-bottom: 0;
-      max-width: 820px;
-    }
-
-    .help-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 18px;
-      margin-top: 20px;
-    }
-
-    .help-feature {
-      background: linear-gradient(180deg, rgba(32,182,158,0.18), rgba(32,182,158,0.06));
-      border: 1px solid rgba(94,234,212,0.16);
-      border-radius: 20px;
-      padding: 26px;
-    }
-
-    .help-feature h4 {
-      font-size: 26px;
-      margin-bottom: 14px;
-    }
-
-    .help-feature p {
-      color: #d6f4ee;
+    .hero-mini {
       font-size: 17px;
-      margin-bottom: 0;
-    }
-
-    .help-side {
-      display: grid;
-      gap: 18px;
-    }
-
-    .help-mini {
-      background: #1e293b;
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 18px;
-      padding: 22px;
-      transition: 0.25s ease;
-    }
-
-    .help-mini:hover {
-      transform: translateY(-4px);
-      background: #334155;
-    }
-
-    .help-mini h4 {
-      font-size: 19px;
+      line-height: 1.7;
+      color: #dbe4f0;
+      max-width: 660px;
       margin-bottom: 10px;
     }
 
-    .help-mini p {
-      font-size: 15px;
-      line-height: 1.7;
+    .hero-mini.muted {
+      color: #8ea0b8;
+      margin-bottom: 0;
+    }
+
+    .section-card,
+    .cta-card {
+      margin-top: 18px;
+    }
+
+    .practical-strip {
+      padding: 26px 32px;
+      background: linear-gradient(180deg, #13213a, #0f1b30);
+      border: 1px solid rgba(94,234,212,0.08);
+    }
+
+    .practical-kicker {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #5eead4;
+      margin-bottom: 14px;
+    }
+
+    .practical-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .practical-grid h3 {
+      font-size: 42px;
+      line-height: 1.02;
+      margin-bottom: 0;
+    }
+
+    .practical-note {
       color: #94a3b8;
       margin-bottom: 0;
     }
 
-    .section-split {
+    .benefit-layout {
       display: grid;
-      grid-template-columns: 0.95fr 1.2fr;
-      gap: 28px;
-      align-items: start;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+      margin-top: 18px;
+      align-items: stretch;
     }
 
-    .split-intro {
-      position: sticky;
-      top: 24px;
+    .benefit-main {
+      background: linear-gradient(180deg, rgba(32,182,158,0.18), rgba(22,32,51,0.92));
+      border: 1px solid rgba(94,234,212,0.15);
+      border-radius: 20px;
+      padding: 26px;
+      min-height: auto;
+    }
+
+    .benefit-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #8ff7e5;
+      margin-bottom: 12px;
+    }
+
+    .benefit-main h4 {
+      font-size: 34px;
+      line-height: 1.02;
+      margin-bottom: 14px;
+    }
+
+    .benefit-main p {
+      font-size: 17px;
+      color: #d9f5ef;
+      margin-bottom: 0;
+    }
+
+    .benefit-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .benefit-item {
+      background: #1b2740;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .benefit-item strong {
+      display: block;
+      font-size: 19px;
+      color: #f8fafc;
+      margin-bottom: 8px;
+    }
+
+    .benefit-item span {
+      display: block;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #9fb0c6;
+    }
+
+    .trigger-section {
+      background: linear-gradient(180deg, #121b2d, #101827);
     }
 
     .small-label {
@@ -435,86 +490,58 @@
       text-transform: uppercase;
     }
 
-    .split-intro p {
+    .trigger-head {
+      max-width: 720px;
+      margin-bottom: 22px;
+    }
+
+    .trigger-head p {
       color: #94a3b8;
       margin-bottom: 0;
     }
 
-    .trigger-list {
+    .trigger-rail {
       display: grid;
-      gap: 14px;
+      gap: 12px;
     }
 
-    .trigger-item {
-      padding: 18px 20px;
-      border-left: 3px solid #20b69e;
-      background: rgba(255,255,255,0.02);
-      border-radius: 0 14px 14px 0;
+    .trigger-row {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 18px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
     }
 
-    .trigger-item strong {
+    .trigger-row:first-child {
+      border-top: 1px solid rgba(94,234,212,0.22);
+    }
+
+    .trigger-row span {
+      display: inline-flex;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      align-items: center;
+      justify-content: center;
+      background: rgba(32,182,158,0.12);
+      color: #5eead4;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .trigger-row strong {
       display: block;
+      font-size: 19px;
       color: #f8fafc;
-      font-size: 17px;
       margin-bottom: 6px;
     }
 
-    .trigger-item span {
-      display: block;
-      color: #94a3b8;
+    .trigger-row p {
       font-size: 15px;
       line-height: 1.7;
-    }
-
-    .usecase-stack {
-      margin-top: 20px;
-      display: grid;
-      gap: 14px;
-    }
-
-    .usecase-row {
-      display: grid;
-      grid-template-columns: 70px 1fr;
-      gap: 18px;
-      align-items: stretch;
-      background: #111827;
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 18px;
-      overflow: hidden;
-      transition: 0.25s ease;
-    }
-
-    .usecase-row:hover {
-      transform: translateY(-3px);
-      border-color: rgba(94,234,212,0.18);
-    }
-
-    .usecase-tag {
-      background: linear-gradient(180deg, #20b69e, #17917f);
-      color: #0f172a;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      letter-spacing: 0.04em;
-      min-height: 100%;
-    }
-
-    .usecase-content {
-      padding: 20px 20px 20px 0;
-    }
-
-    .usecase-content h4 {
-      color: #f8fafc;
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
-
-    .usecase-content p {
       color: #94a3b8;
-      font-size: 16px;
-      line-height: 1.7;
       margin-bottom: 0;
     }
 
@@ -522,7 +549,7 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
-      margin-top: 20px;
+      margin-top: 18px;
     }
 
     .step-card {
@@ -614,41 +641,15 @@
       color: #fff;
     }
 
-    #n8n-chat .chat-message-from-bot,
-    #n8n-chat [data-testid="chat-message-bot"] {
-      background: #f1f5f9 !important;
-      color: #0f172a !important;
-      border: 1px solid #dbe2ea !important;
-    }
-
-    #n8n-chat .chat-message-from-user,
-    #n8n-chat [data-testid="chat-message-user"] {
-      background: #0f172a !important;
-      color: #ffffff !important;
-      border: 1px solid #0f172a !important;
-    }
-
-    #n8n-chat .chat-message-from-user *,
-    #n8n-chat [data-testid="chat-message-user"] * {
-      color: #ffffff !important;
-    }
-
-    #n8n-chat .chat-input textarea,
-    #n8n-chat textarea,
-    #n8n-chat input {
-      color: #0f172a !important;
-      background: #ffffff !important;
-    }
-
-    @media (max-width: 900px) {
-      .help-grid,
-      .section-split,
+    @media (max-width: 980px) {
+      .practical-grid,
+      .benefit-layout,
       .steps {
         grid-template-columns: 1fr;
       }
 
-      .split-intro {
-        position: static;
+      .practical-grid h3 {
+        font-size: 32px;
       }
     }
 
@@ -720,56 +721,45 @@
       }
 
       main {
-        padding: 24px 14px 44px;
+        padding: 18px 14px 44px;
       }
 
       .hero-card,
       .section-card,
       .cta-card {
         padding: 22px 18px;
-        border-radius: 18px;
+        border-radius: 20px;
       }
 
       .hero-card {
-        min-height: 40vh;
+        min-height: auto;
       }
 
       h2 {
-        font-size: 34px;
-        line-height: 1.08;
-        letter-spacing: -0.03em;
-      }
-
-      p,
-      .subtitle,
-      .lead {
-        font-size: 17px;
-        line-height: 1.75;
+        font-size: 42px;
+        line-height: 1.02;
+        margin-bottom: 14px;
+        letter-spacing: -0.04em;
       }
 
       h3 {
         font-size: 24px;
       }
 
-      .usecase-row {
+      p,
+      .hero-mini {
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .practical-grid h3,
+      .benefit-main h4 {
+        font-size: 28px;
+      }
+
+      .trigger-row {
         grid-template-columns: 1fr;
-      }
-
-      .usecase-tag {
-        min-height: 58px;
-      }
-
-      .usecase-content {
-        padding: 0 18px 20px 18px;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .hero-actions .btn {
-        width: 100%;
-        text-align: center;
+        gap: 10px;
       }
     }
   </style>
@@ -797,6 +787,7 @@
 
     <nav class="nav">
       <a href="index.html">Kezdőlap</a>
+
       <div class="dropdown">
         <a href="#" class="dropbtn">Szolgáltatások</a>
         <div class="dropdown-content">
@@ -805,6 +796,7 @@
           <a href="ai-megoldasok.html">AI megoldások</a>
         </div>
       </div>
+
       <a href="adatvedelem.html">Adatvédelem</a>
       <a href="impresszum.html">Impresszum</a>
     </nav>
@@ -812,128 +804,123 @@
 
   <main>
     <section class="hero-card">
-      <div>
+      <div class="hero-inner">
         <span class="badge">Folyamatautomatizálás</span>
-        <h2>Kevesebb ismétlődő feladat. Gyorsabb, átláthatóbb működés.</h2>
+
+        <h2>
+          Kevesebb ismétlődő feladat.<br>
+          Gyorsabb, átláthatóbb működés.
+        </h2>
+
+        <p class="hero-mini">
+          Automatizálási megoldásokat építünk cégeknek, hogy a manuális adminisztráció,
+          adatkezelés és belső folyamatok kevesebb időt vigyenek el.
+        </p>
+
+        <p class="hero-mini muted">
+          Így gyorsabban haladhat a napi működés, kevesebb hibával és jobban követhető lépésekkel.
+        </p>
       </div>
     </section>
 
-    <section class="section-card">
-      <h3>Mit jelent ez a gyakorlatban?</h3>
-      <p class="subtitle">
-        A TurnAI olyan folyamatautomatizálási megoldásokat épít vállalkozásoknak,
-        amelyek csökkentik a manuális adminisztrációt, gyorsítják a belső lépéseket,
-        és megbízhatóbbá teszik a napi működést.
-      </p>
-      <p class="lead">
-        Ha ugyanazokat az adatokat több helyre viszitek fel, kézzel követtek nyomon feladatokat,
-        vagy túl sok idő megy el ismétlődő operatív munkára, ott az automatizáció gyorsan valódi értéket tud adni.
-      </p>
+    <section class="section-card practical-strip">
+      <div class="practical-kicker">Röviden</div>
+      <div class="practical-grid">
+        <h3>Mit jelent ez a gyakorlatban?</h3>
+        <div>
+          <p>
+            Az automatizálás leveszi a visszatérő manuális terhelés egy részét a csapatról,
+            így kevesebb idő megy el adminisztrációra és több marad a valódi értékteremtő munkára.
+          </p>
+          <p class="practical-note">
+            Nem több eszköz és nem bonyolultabb működés a cél, hanem egyszerűbb, gyorsabb és jobban követhető folyamatok.
+          </p>
+        </div>
+      </div>
     </section>
 
     <section class="section-card">
       <h3>Miben segít?</h3>
-      <div class="help-grid">
-        <article class="help-feature">
-          <h4>Kevesebb adminisztráció</h4>
+
+      <div class="benefit-layout">
+        <div class="benefit-main">
+          <span class="benefit-eyebrow">Fő előny</span>
+          <h4>Kevesebb adminisztráció, több hasznos munkaidő</h4>
           <p>
-            Az ismétlődő kézi lépések egy része kiváltható, így kevesebb idő megy el operatív munkára,
-            és több figyelem jut az érdemi feladatokra.
+            Az ismétlődő kézi lépések kiváltásával csökken az operatív teher,
+            gyorsabbá válik a belső működés, és a csapat több figyelmet fordíthat az érdemi feladatokra.
           </p>
-        </article>
+        </div>
 
-        <div class="help-side">
-          <article class="help-mini">
-            <h4>Gyorsabb folyamatok</h4>
-            <p>Az adatok, értesítések és státuszok automatikusan továbbíthatók a megfelelő helyre.</p>
-          </article>
+        <div class="benefit-list">
+          <div class="benefit-item">
+            <strong>Gyorsabb folyamatok</strong>
+            <span>Az adatok, értesítések és státuszok automatikusan a megfelelő helyre kerülnek.</span>
+          </div>
 
-          <article class="help-mini">
-            <h4>Kevesebb hiba</h4>
-            <p>Kevesebb manuális adatmásolás mellett csökken a hibázás és az elakadás esélye is.</p>
-          </article>
+          <div class="benefit-item">
+            <strong>Kevesebb hiba</strong>
+            <span>A manuális adatmásolás csökkentésével kisebb az elakadás és a pontatlanság esélye.</span>
+          </div>
 
-          <article class="help-mini">
-            <h4>Átláthatóbb működés</h4>
-            <p>Könnyebben követhetővé válik, mi történt meg, mi van folyamatban, és hol van teendő.</p>
-          </article>
+          <div class="benefit-item">
+            <strong>Átláthatóbb működés</strong>
+            <span>Könnyebben követhető, mi történt meg, mi van folyamatban és hol kell beavatkozni.</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section-card section-split">
-      <div class="split-intro">
-        <span class="small-label">Mikor aktuális?</span>
+    <section class="section-card trigger-section">
+      <div class="trigger-head">
+        <span class="small-label">Jelek</span>
         <h3>Mikor érdemes automatizálni?</h3>
         <p>
-          Általában ott érdemes elkezdeni, ahol ugyanazok a lépések újra és újra előfordulnak,
-          és az ismétlődő operatív munka már lassítja a napi működést.
+          Általában akkor, amikor a működés már túl sok kézi lépésen, másolgatáson
+          és ismétlődő adminisztráción múlik.
         </p>
       </div>
 
-      <div class="trigger-list">
-        <div class="trigger-item">
-          <strong>Ismétlődő kézi lépések</strong>
-          <span>Ha ugyanazokat a műveleteket újra és újra manuálisan végzitek.</span>
-        </div>
-
-        <div class="trigger-item">
-          <strong>Több rendszer használata</strong>
-          <span>Ha gyakran kell adatokat mozgatni különböző eszközök és rendszerek között.</span>
-        </div>
-
-        <div class="trigger-item">
-          <strong>Túl sok belső adminisztráció</strong>
-          <span>Ha a napi működésből aránytalanul sok időt visz el az operatív háttérmunka.</span>
-        </div>
-
-        <div class="trigger-item">
-          <strong>Lassú reakcióidő</strong>
-          <span>Ha a folyamatok túl sok kézi lépés miatt lassan haladnak előre.</span>
-        </div>
-
-        <div class="trigger-item">
-          <strong>Több kiszámíthatóság</strong>
-          <span>Ha kevesebb hibával és rendezettebb működéssel szeretnétek dolgozni.</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-card">
-      <h3>Hogyan néz ki a gyakorlatban?</h3>
-
-      <div class="usecase-stack">
-        <article class="usecase-row">
-          <div class="usecase-tag">01</div>
-          <div class="usecase-content">
-            <h4>Érdeklődőkezelés</h4>
-            <p>Egy bejövő űrlap után a rendszer menti az adatokat, értesítést küld, és elindítja a következő lépést.</p>
+      <div class="trigger-rail">
+        <div class="trigger-row">
+          <span>01</span>
+          <div>
+            <strong>Ugyanazokat a lépéseket végzitek újra és újra</strong>
+            <p>Ez tipikusan az a pont, ahol a folyamat automatizálhatóvá válik.</p>
           </div>
-        </article>
+        </div>
 
-        <article class="usecase-row">
-          <div class="usecase-tag">02</div>
-          <div class="usecase-content">
-            <h4>Belső jóváhagyások</h4>
-            <p>Az ismétlődő belső folyamatok, státuszváltások és továbbítások automatikusan kezelhetők.</p>
+        <div class="trigger-row">
+          <span>02</span>
+          <div>
+            <strong>Több rendszer között kell adatokat mozgatni</strong>
+            <p>Az ismétlődő másolás nemcsak lassú, hanem hibaforrás is.</p>
           </div>
-        </article>
+        </div>
 
-        <article class="usecase-row">
-          <div class="usecase-tag">03</div>
-          <div class="usecase-content">
-            <h4>Ügyfélkommunikáció</h4>
-            <p>Visszaigazoló üzenetek, tájékoztatások és egyszerűbb kommunikációs lépések automatizálhatók.</p>
+        <div class="trigger-row">
+          <span>03</span>
+          <div>
+            <strong>A belső adminisztráció túl sok időt visz el</strong>
+            <p>Ha az operatív háttérmunka visszafogja a napi működést, érdemes egyszerűsíteni.</p>
           </div>
-        </article>
+        </div>
 
-        <article class="usecase-row">
-          <div class="usecase-tag">04</div>
-          <div class="usecase-content">
-            <h4>Adatkezelés</h4>
-            <p>Az adatok rendszerezettebben és gyorsabban kerülhetnek a megfelelő eszközökbe vagy táblákba.</p>
+        <div class="trigger-row">
+          <span>04</span>
+          <div>
+            <strong>Lassú a reakcióidő</strong>
+            <p>Minél több a kézi lépés, annál több a csúszás és az elakadás.</p>
           </div>
-        </article>
+        </div>
+
+        <div class="trigger-row">
+          <span>05</span>
+          <div>
+            <strong>Kiszámíthatóbb működést szeretnétek</strong>
+            <p>Az automatizálás nemcsak gyorsít, hanem stabilabb folyamatokat is ad.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -945,11 +932,13 @@
           <h4>Felmérés</h4>
           <p>Átnézzük, hol vannak a visszatérő manuális lépések és a legnagyobb időveszteségek.</p>
         </div>
+
         <div class="step-card">
           <span class="step-number">2</span>
           <h4>Automatizáció tervezése</h4>
           <p>Kijelöljük, mely folyamatokat érdemes egyszerűen, gyorsan és biztonságosan automatizálni.</p>
         </div>
+
         <div class="step-card">
           <span class="step-number">3</span>
           <h4>Bevezetés és finomhangolás</h4>
