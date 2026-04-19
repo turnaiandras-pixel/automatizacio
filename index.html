@@ -62,6 +62,14 @@
       --chat--header--padding: var(--chat--spacing);
       --chat--header--background: #0f172a;
       --chat--header--color: var(--chat--color-light);
+      --chat--header--border-top: none;
+      --chat--header--border-bottom: none;
+      --chat--header--border-left: none;
+      --chat--header--border-right: none;
+
+      --chat--heading--font-size: 2em;
+      --chat--subtitle--font-size: 0.95rem;
+      --chat--subtitle--line-height: 1.6;
 
       --chat--message--font-size: 1rem;
       --chat--message--padding: var(--chat--spacing);
@@ -77,6 +85,9 @@
       --chat--message--user--color: #ffffff;
       --chat--message--user--border: 1px solid #0f172a;
 
+      --chat--message--pre--background: rgba(0, 0, 0, 0.05);
+      --chat--messages-list--padding: var(--chat--spacing);
+
       --chat--toggle--size: 64px;
       --chat--toggle--width: var(--chat--toggle--size);
       --chat--toggle--height: var(--chat--toggle--size);
@@ -86,11 +97,35 @@
       --chat--toggle--active--background: var(--chat--color--primary--shade-100);
       --chat--toggle--color: var(--chat--color-white);
 
+      --chat--textarea--height: 50px;
+      --chat--textarea--max-height: 30rem;
+      --chat--input--font-size: inherit;
+      --chat--input--border: 0;
+      --chat--input--border-radius: 0;
+      --chat--input--padding: 0.8rem;
       --chat--input--background: var(--chat--color-white);
       --chat--input--text-color: #0f172a;
+      --chat--input--line-height: 1.5;
+      --chat--input--placeholder--font-size: var(--chat--input--font-size);
+      --chat--input--border-active: 0;
+      --chat--input--left--panel--width: 2rem;
 
+      --chat--button--padding: calc(var(--chat--spacing) * 0.5) var(--chat--spacing);
+      --chat--button--border-radius: 12px;
+      --chat--button--font-size: 1rem;
+      --chat--button--line-height: 1;
+      --chat--button--color--primary: var(--chat--color-light);
       --chat--button--background--primary: var(--chat--color--secondary);
+      --chat--button--border--primary: none;
+      --chat--button--color--primary--hover: var(--chat--color-light);
       --chat--button--background--primary--hover: var(--chat--color-secondary-shade-50);
+      --chat--button--border--primary--hover: none;
+
+      --chat--close--button--color-hover: var(--chat--color--primary);
+      --chat--input--send--button--background: var(--chat--color-white);
+      --chat--input--send--button--color: var(--chat--color--secondary);
+      --chat--input--send--button--background-hover: var(--chat--color--primary-shade-50);
+      --chat--input--send--button--color-hover: var(--chat--color-secondary-shade-50);
 
       --chat--body--background: var(--chat--color-light);
       --chat--footer--background: var(--chat--color-light);
@@ -130,6 +165,10 @@
       text-decoration: none;
       color: #e2e8f0;
       flex-shrink: 0;
+    }
+
+    .brand:hover {
+      opacity: 0.96;
     }
 
     .brand-mark {
@@ -400,6 +439,109 @@
       background: #1ca08a;
     }
 
+    .why-section {
+      padding-top: 20px;
+    }
+
+    .why-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 28px;
+      align-items: start;
+      background: linear-gradient(180deg, #111827, #0f172a);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 32px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+    }
+
+    .why-intro {
+      position: sticky;
+      top: 24px;
+    }
+
+    .why-badge {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(32, 182, 158, 0.14);
+      color: #5eead4;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .why-intro h3 {
+      font-size: 34px;
+      line-height: 1.15;
+      margin-bottom: 14px;
+      color: #f8fafc;
+    }
+
+    .why-intro p {
+      color: #94a3b8;
+      font-size: 16px;
+      max-width: 420px;
+      margin-bottom: 0;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .why-card {
+      background: #1e293b;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 22px;
+      transition: 0.3s;
+    }
+
+    .why-card:hover {
+      transform: translateY(-4px);
+      background: #334155;
+    }
+
+    .why-card h4 {
+      font-size: 19px;
+      margin-bottom: 12px;
+      color: #f8fafc;
+    }
+
+    .why-card ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .why-card li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 10px;
+      color: #cbd5e1;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .why-card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #20b69e;
+      box-shadow: 0 0 0 4px rgba(32, 182, 158, 0.14);
+    }
+
+    .why-card li:last-child {
+      margin-bottom: 0;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -501,6 +643,23 @@
 
       .metric-card strong {
         font-size: 30px;
+      }
+
+      .why-wrap {
+        grid-template-columns: 1fr;
+        padding: 22px;
+      }
+
+      .why-intro {
+        position: static;
+      }
+
+      .why-intro h3 {
+        font-size: 28px;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -695,8 +854,55 @@
     <p class="metrics-note">
       Ezek iparági benchmarkok, tájékoztató jellegű számok. A tényleges eredmény attól függ,
       milyen folyamatot automatizálunk, mekkora a forgalom, és mennyire jól illeszkedik a megoldás
-      a napi működésedhez.
+      a napi működésedhez. [web:1574][web:1580]
     </p>
+  </section>
+
+  <section class="section why-section">
+    <div class="why-wrap">
+      <div class="why-intro">
+        <span class="why-badge">Miért éri meg?</span>
+        <h3>Nem csak modernebb lesz a weboldalad, hanem hatékonyabb is.</h3>
+        <p>
+          Az AI chat és az automatizáció akkor ad valódi értéket, ha időt szabadít fel,
+          gyorsítja a reakcióidőt, és segít rendezettebben kezelni az érdeklődőket.
+        </p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <h4>Kevesebb manuális munka</h4>
+          <ul>
+            <li>Kevesebb ismétlődő kérdésre kell kézzel válaszolni.</li>
+            <li>Csökken az adminisztráció és az első körös egyeztetések terhe.</li>
+          </ul>
+        </div>
+
+        <div class="why-card">
+          <h4>Gyorsabb ügyfélreakció</h4>
+          <ul>
+            <li>A látogatók azonnal választ kaphatnak a gyakori kérdésekre.</li>
+            <li>Kisebb az esélye annak, hogy egy érdeklődő válasz nélkül marad.</li>
+          </ul>
+        </div>
+
+        <div class="why-card">
+          <h4>Jobb érdeklődőkezelés</h4>
+          <ul>
+            <li>Az AI chat bekéri és rendszerezi a fontos adatokat.</li>
+            <li>Könnyebb kiszűrni, melyik megkeresésből lehet valódi ügyfél.</li>
+          </ul>
+        </div>
+
+        <div class="why-card">
+          <h4>Átláthatóbb működés</h4>
+          <ul>
+            <li>Rendezettebbé válik a bejövő megkeresések kezelése.</li>
+            <li>Több idő jut azokra a feladatokra, ahol tényleg ember kell.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="section">
@@ -751,64 +957,6 @@
       </div>
     </div>
   </section>
-
- <section class="section">
-  <h3>Miért éri meg?</h3>
-
-  <p>
-    A jól beépített AI automatizáció nem öncélú technológia, hanem egy olyan üzleti eszköz,
-    amely kézzelfogható előnyt ad a napi működésben. Akkor működik igazán jól,
-    amikor nem “mindent akar kiváltani”, hanem célzottan leveszi a csapat válláról azokat
-    a visszatérő, időigényes feladatokat, amelyek folyamatosan megszakítják a valóban fontos munkát.
-  </p>
-
-  <p>
-    Sok vállalkozásnál rengeteg idő megy el ugyanazokra a kérdésekre, az első körös egyeztetésekre,
-    az érdeklődők adatainak összegyűjtésére, a visszatérő információk elküldésére vagy a kézi utánkövetésre.
-    Ezek külön-külön nem mindig tűnnek nagy feladatnak, de összeadódva jelentős terhelést jelentenek,
-    és lassítják az egész működést. Az AI chat és az automatizáció pont ezeken a pontokon tud a leggyorsabban értéket teremteni.
-  </p>
-
-  <p>
-    Amikor a gyakori kérdésekre azonnal érkezik válasz, amikor az érdeklődő már a kapcsolatfelvétel elején
-    megadja a fontos adatokat, és amikor a rendszer automatikusan segít rendszerezni a beérkező megkereséseket,
-    akkor nemcsak idő szabadul fel, hanem javul a teljes ügyfélélmény is. A gyorsabb reakcióidő megbízhatóbb,
-    profibb benyomást kelt, és csökkenti annak esélyét, hogy egy érdeklődő azért lépjen tovább,
-    mert túl lassan kap választ.
-  </p>
-
-  <p>
-    Ez különösen fontos azoknál a vállalkozásoknál, ahol nem minden érdeklődőből lesz ügyfél,
-    ezért számít, hogy mennyire gyorsan és mennyire strukturáltan történik az első szűrés.
-    Egy jól felépített AI chat nemcsak információt ad, hanem segít abban is,
-    hogy a komoly érdeklődők ne vesszenek el a bejövő üzenetek között,
-    és a személyes időd inkább azokra menjen el, akiknél valóban van üzleti potenciál.
-  </p>
-
-  <p>
-    Az automatizáció másik nagy előnye, hogy skálázhatóbbá teszi a működést.
-    Egy ember egyszerre csak korlátozott számú beszélgetést, egyeztetést vagy adminisztratív lépést tud kezelni,
-    míg egy AI-alapú rendszer párhuzamosan több érdeklődőt is tud fogadni, kérdezni, válaszolni és adatot gyűjteni.
-    Ez különösen akkor hasznos, amikor több megkeresés érkezik egyszerre,
-    vagy amikor a látogatók munkaidőn kívül keresnek meg.
-  </p>
-
-  <p>
-    A gyakorlatban ez azt jelenti, hogy kevesebb idő megy el adminisztrációra,
-    csökken a manuális utánkövetés terhe, javul a belső átláthatóság,
-    és a csapat több energiát tud fordítani azokra a feladatokra,
-    ahol tényleg emberi döntés, személyes figyelem vagy szakmai jelenlét kell.
-    Ezért éri meg: nem pusztán gyorsabb lesz a működés, hanem rendezettebb,
-    kiszámíthatóbb és üzletileg hatékonyabb is.
-  </p>
-
-  <p>
-    A TurnAI célja nem az, hogy egy látványos, de kihasználatlan technológiát tegyen a weboldaladra,
-    hanem az, hogy olyan AI chatet és automatizációs megoldást építsen,
-    amely ténylegesen illeszkedik a vállalkozásod működéséhez,
-    és már rövid távon is érezhető könnyebbséget hozzon a mindennapokban.
-  </p>
-</section>
 
   <section class="section">
     <h3>Induljunk el egy rövid egyeztetéssel</h3>
