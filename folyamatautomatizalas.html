@@ -28,13 +28,13 @@
       --chat--transition-duration: 0.15s;
       --chat--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
-      --chat--window--width: 450px;
-      --chat--window--height: 670px;
+      --chat--window--width: 400px;
+      --chat--window--height: 600px;
       --chat--window--bottom: var(--chat--spacing);
       --chat--window--right: var(--chat--spacing);
       --chat--window--z-index: 9999;
       --chat--window--border: 1px solid var(--chat--color-light-shade-50);
-      --chat--window--border-radius: 24px;
+      --chat--window--border-radius: 18px;
       --chat--window--margin-bottom: var(--chat--spacing);
 
       --chat--header-height: auto;
@@ -770,6 +770,15 @@
         overflow: hidden !important;
       }
     }
+  #n8n-chat .n8n-chat-window,
+#n8n-chat [data-testid="chat-window"] {
+  width: 450px !important;
+  height: 670px !important;
+  max-width: 450px !important;
+  max-height: 670px !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
+}
   </style>
 </head>
 <body>
