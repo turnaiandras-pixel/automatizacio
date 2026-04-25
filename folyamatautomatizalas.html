@@ -3,8 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Folyamatautomatizálás cégeknek | TurnAI</title>
-  <meta name="description" content="Folyamatautomatizálás cégeknek: ismétlődő adminisztráció, adatkezelés és üzleti folyamatok automatizálása a gyorsabb, átláthatóbb működésért." />
+
+  <title>Automatizálás cégeknek | TurnAI</title>
+  <meta name="description" content="Automatizálás cégeknek: ismétlődő adminisztráció, adatkezelés és üzleti folyamatok egyszerűsítése gyorsabb, átláthatóbb működésért." />
+
+  <meta property="og:title" content="Automatizálás cégeknek | TurnAI" />
+  <meta property="og:description" content="Kevesebb ismétlődő feladat, gyorsabb folyamatok, átláthatóbb működés vállalkozásoknak." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.turnai.co.hu/automatizalas.html" />
+  <meta property="og:site_name" content="TurnAI" />
+  <meta property="og:image" content="https://www.turnai.co.hu/og-image.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Automatizálás cégeknek | TurnAI" />
+  <meta name="twitter:description" content="Automatizálás vállalkozásoknak a gyorsabb és rendezettebb működésért." />
+  <meta name="twitter:image" content="https://www.turnai.co.hu/og-image.jpg" />
+
+  <link rel="icon" href="https://www.turnai.co.hu/favicon.png" type="image/png" sizes="48x48" />
+  <link rel="shortcut icon" href="https://www.turnai.co.hu/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="https://www.turnai.co.hu/favicon.png" />
+
+  <link rel="canonical" href="https://www.turnai.co.hu/automatizalas.html" />
 
   <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 
@@ -635,6 +654,42 @@
       background: linear-gradient(180deg, #111827, #0f172a);
     }
 
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .link-card {
+      display: block;
+      background: #1b2740;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 22px;
+      text-decoration: none;
+      transition: 0.25s ease;
+    }
+
+    .link-card:hover {
+      background: #22314f;
+      transform: translateY(-4px);
+    }
+
+    .link-card strong {
+      display: block;
+      font-size: 20px;
+      color: #f8fafc;
+      margin-bottom: 10px;
+    }
+
+    .link-card span {
+      display: block;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #9fb0c6;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -677,12 +732,13 @@
     #n8n-chat input {
       color: #0f172a !important;
       background: #ffffff !important;
-    }   
+    }
 
     @media (max-width: 980px) {
       .practical-grid,
       .benefit-layout,
-      .steps {
+      .steps,
+      .link-grid {
         grid-template-columns: 1fr;
       }
 
@@ -813,6 +869,26 @@
       }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "TurnAI",
+    "url": "https://www.turnai.co.hu/",
+    "logo": "https://www.turnai.co.hu/favicon.png"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Automatizálás cégeknek",
+    "url": "https://www.turnai.co.hu/automatizalas.html",
+    "description": "Automatizálás cégeknek: ismétlődő adminisztráció és üzleti folyamatok egyszerűsítése."
+  }
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -841,12 +917,13 @@
       <div class="dropdown">
         <a href="#" class="dropbtn">Szolgáltatások</a>
         <div class="dropdown-content">
-          <a href="folyamatautomatizalas.html">Folyamatautomatizálás</a>
+          <a href="automatizalas.html">Automatizálás</a>
+          <a href="weboldali-chat.html">Weboldali chat</a>
           <a href="integraciok.html">Integrációk</a>
-          <a href="ai-megoldasok.html">Weboldali AI chat</a>
         </div>
       </div>
 
+      <a href="weboldali-chat.html">Weboldali chat</a>
       <a href="adatvedelem.html">Adatvédelem</a>
       <a href="impresszum.html">Impresszum</a>
     </nav>
@@ -855,7 +932,7 @@
   <main>
     <section class="hero-card">
       <div class="hero-inner">
-        <span class="badge">Folyamatautomatizálás</span>
+        <span class="badge">Automatizálás</span>
 
         <h2>
           <span class="hero-line">Kevesebb ismétlődő feladat.</span>
@@ -985,7 +1062,7 @@
 
         <div class="step-card">
           <span class="step-number">2</span>
-          <h4>Automatizáció tervezése</h4>
+          <h4>Automatizálás tervezése</h4>
           <p>Kijelöljük, mely folyamatokat érdemes egyszerűen, gyorsan és biztonságosan automatizálni.</p>
         </div>
 
@@ -997,6 +1074,21 @@
       </div>
     </section>
 
+    <section class="section-card">
+      <h3>További fontos oldalak</h3>
+      <div class="link-grid">
+        <a class="link-card" href="weboldali-chat.html">
+          <strong>Weboldali chat</strong>
+          <span>Nézd meg, hogyan segít a weboldali AI chat az azonnali válaszadásban és az érdeklődők kezelésében.</span>
+        </a>
+
+        <a class="link-card" href="index.html">
+          <strong>TurnAI főoldal</strong>
+          <span>Áttekintés a fő szolgáltatásokról, a weboldali chattről és az automatizálási megoldásokról.</span>
+        </a>
+      </div>
+    </section>
+
     <section class="cta-card">
       <h3>Beszéljünk a folyamataidról</h3>
       <p>
@@ -1005,8 +1097,8 @@
       </p>
 
       <div class="hero-actions">
-        <a href="mailto:info@turnai.co.hu?subject=Konzultáció%20folyamatautomatizálásról" class="btn btn-primary">Konzultáció kérése</a>
-        <a href="integraciok.html" class="btn btn-secondary">Integrációk megtekintése</a>
+        <a href="mailto:info@turnai.co.hu?subject=Konzultáció%20automatizálásról" class="btn btn-primary">Konzultáció kérése</a>
+        <a href="weboldali-chat.html" class="btn btn-secondary">Weboldali chat megtekintése</a>
       </div>
     </section>
   </main>
