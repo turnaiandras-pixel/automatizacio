@@ -662,32 +662,6 @@ footer a:hover {
 color: #fff;
 }
 
-#n8n-chat .chat-message-from-bot,
-#n8n-chat [data-testid="chat-message-bot"] {
-background: #f1f5f9 !important;
-color: #0f172a !important;
-border: 1px solid #dbe2ea !important;
-}
-
-#n8n-chat .chat-message-from-user,
-#n8n-chat [data-testid="chat-message-user"] {
-background: #0f172a !important;
-color: #ffffff !important;
-border: 1px solid #0f172a !important;
-}
-
-#n8n-chat .chat-message-from-user *,
-#n8n-chat [data-testid="chat-message-user"] * {
-color: #ffffff !important;
-}
-
-#n8n-chat .chat-input textarea,
-#n8n-chat textarea,
-#n8n-chat input {
-color: #0f172a !important;
-background: #ffffff !important;
-}
-
 @media (max-width: 980px) {
 .practical-grid,
 .benefit-layout,
@@ -1026,42 +1000,6 @@ Ha szeretnéd átlátni, hol lehet időt spórolni, mit lehet egyszerűsíteni,
 <a href="adatvedelem.html">Adatvédelem</a> |
 <a href="impresszum.html">Impresszum</a>
 </footer>
-
-<div id="n8n-chat"></div>
-
-<script type="module">
-import { createChat } from "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js";
-
-createChat({
-webhookUrl: "https://n8n-2-5jna.onrender.com/webhook/b80d57ee-fc95-42de-8a57-dad2c5db98ce/chat",
-webhookConfig: {
-method: "POST",
-headers: {}
-},
-target: "#n8n-chat",
-mode: "window",
-chatInputKey: "chatInput",
-chatSessionKey: "sessionId",
-loadPreviousSession: true,
-metadata: {},
-showWelcomeScreen: false,
-defaultLanguage: "en",
-initialMessages: [
-"Szia!",
-"Én egy AI automatizált chat vagyok! Miben segíthetek neked?"
-],
-i18n: {
-en: {
-title: "Szia! 👋",
-subtitle: "Itt vagyok 24/7.",
-footer: "",
-getStarted: "Új beszélgetés",
-inputPlaceholder: "Mit szeretnél tudni?"
-}
-},
-enableStreaming: false
-});
-</script>
 
 <script>
 const menuToggle = document.querySelector('.menu-toggle');
