@@ -51,68 +51,123 @@
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 18px 0;
-    }
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 0;
+}
 
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-      color: var(--text);
-      flex-shrink: 0;
-    }
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: #e2e8f0;
+  min-width: 0;
+  flex-shrink: 0;
+}
 
-    .brand-mark {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      background: linear-gradient(180deg, var(--primary), var(--primary-dark));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 24px rgba(32, 182, 158, 0.18);
-      flex-shrink: 0;
-    }
+.brand-mark {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #20b69e, #17917f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 24px rgba(32, 182, 158, 0.18);
+  flex-shrink: 0;
+}
 
-    .brand-mark svg {
-      width: 26px;
-      height: 26px;
-      display: block;
-    }
+.brand-mark svg {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.05;
-    }
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+  min-width: 0;
+}
 
-    .brand-name {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 0.4px;
-      color: #f8fafc;
-    }
+.brand-name {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #f8fafc;
+}
 
-    .brand-name .ai {
-      color: var(--primary);
-    }
+.brand-name .ai {
+  color: #20b69e;
+}
 
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      align-items: center;
-      font-size: 0.97rem;
-      color: var(--muted);
-    }
+.brand-tagline {
+  font-size: 12px;
+  color: #94a3b8;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
 
-    nav a:hover, nav a.active { color: #ffffff; }
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav a,
+.dropbtn {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.nav a:hover,
+.dropbtn:hover,
+.nav a.active {
+  color: #fff;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 240px;
+  background: #1e293b;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 16px;
+  color: #cbd5e1;
+  text-decoration: none;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.dropdown-content a:hover {
+  background: #334155;
+  color: #fff;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
     .hero {
       padding: 72px 0 28px;
@@ -358,34 +413,41 @@
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="./index.html" aria-label="TurnAI főoldal">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14 14H31" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
-            <path d="M14 24H26" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
-            <path d="M14 34H22" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
-            <circle cx="34" cy="14" r="3.5" fill="#0F172A"/>
-            <circle cx="29" cy="24" r="3.5" fill="#0F172A"/>
-            <circle cx="25" cy="34" r="3.5" fill="#0F172A"/>
-          </svg>
-        </span>
-        <span class="brand-text">
-          <span class="brand-name">Turn<span class="ai">AI</span></span>
-        </span>
-      </a>
-      <nav aria-label="Fő navigáció">
-        <a href="./index.html">Főoldal</a>
-        <a href="./folyamatautomatizalas.html">Folyamatautomatizálás</a>
-        <a href="./erdeklodoszerzes.html">Érdeklődőszerzés</a>
-        <a href="./arazas.html" class="active">Árazás</a>
-        <a href="./impresszum.html">Impresszum</a>
-        <a href="./adatvedelem.html">Adatvédelem</a>
-      </nav>
-    </div>
-  </header>
+ <header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand" aria-label="TurnAI kezdőlap">
+      <div class="brand-mark">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M14 14H31" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+          <path d="M14 24H26" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+          <path d="M14 34H22" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="34" cy="14" r="3.5" fill="#0F172A"/>
+          <circle cx="29" cy="24" r="3.5" fill="#0F172A"/>
+          <circle cx="25" cy="34" r="3.5" fill="#0F172A"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">Turn<span class="ai">AI</span></span>
+        <span class="brand-tagline">automatizáció · integráció · ai chat</span>
+      </div>
+    </a>
 
+    <nav class="nav" aria-label="Fő navigáció">
+      <a href="index.html">Kezdőlap</a>
+      <div class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Szolgáltatások</a>
+        <div class="dropdown-content">
+          <a href="folyamatautomatizalas.html">Folyamatautomatizálás</a>
+          <a href="integraciok.html">Érdeklődőkezelés</a>
+          <a href="ai-megoldasok.html">Weboldali AI chat</a>
+        </div>
+      </div>
+      <a href="arazas%20(1).html" class="active">Árazás</a>
+      <a href="adatvedelem.html">Adatvédelem</a>
+      <a href="impresszum.html">Impresszum</a>
+    </nav>
+  </div>
+</header>
   <main>
     <section class="hero">
       <div class="container hero-grid">
