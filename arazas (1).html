@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Árazás | TurnAI</title>
+  <meta name="description" content="Weboldali AI chat már 19 990 Ft / hó ártól. Gyors bevezetés, gyakori kérdések megválaszolása és érdeklődők fogadása vállalkozásoknak." />
+  <style>
+    :root {
+      --bg: #f7f6f2;
+      --surface: #ffffff;
+      --surface-2: #f1eee8;
+      --text: #1f1d18;
+      --muted: #6f6b63;
+      --border: #ddd8cf;
+      --primary: #0d6b73;
+      --primary-dark: #084d52;
+      --accent: #e6f1f2;
+      --shadow: 0 12px 30px rgba(20, 26, 28, 0.08);
+      --radius: 20px;
+      --radius-sm: 14px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(247, 246, 242, 0.9);
+      border-bottom: 1px solid rgba(31, 29, 24, 0.08);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), #59a8ad);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      font-size: 0.97rem;
+      color: var(--muted);
+    }
+
+    nav a:hover, nav a.active { color: var(--text); }
+
+    .hero {
+      padding: 72px 0 28px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-copy, .offer-card, .card, .faq-item, .final-cta {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: var(--accent);
+      border-radius: 999px;
+      color: var(--primary-dark);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 { line-height: 1.1; letter-spacing: -0.03em; margin: 0; }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      max-width: 12ch;
+      margin-bottom: 16px;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 58ch;
+      margin-bottom: 22px;
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .hero-points div {
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-2);
+      border: 1px solid rgba(31, 29, 24, 0.05);
+      font-size: 0.96rem;
+      color: var(--text);
+    }
+
+    .offer-card {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(180deg, #fff, #f7fbfb);
+    }
+
+    .price-label {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      margin: 0 0 4px;
+    }
+
+    .price small {
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .price-note {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .cta, .cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .cta {
+      background: var(--primary);
+      color: white;
+    }
+
+    .cta:hover { background: var(--primary-dark); }
+
+    .cta-secondary {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: white;
+    }
+
+    .section {
+      padding: 26px 0;
+    }
+
+    .section-header {
+      max-width: 62ch;
+      margin-bottom: 20px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      margin-bottom: 10px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 26px;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+
+    .card p, .card li, .faq-item p {
+      color: var(--muted);
+    }
+
+    .card ul {
+      padding-left: 18px;
+      margin: 12px 0 0;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: var(--accent);
+      color: var(--primary-dark);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .faq {
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq-item {
+      padding: 22px 24px;
+    }
+
+    .faq-item h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .final-cta {
+      padding: 34px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin: 14px 0 70px;
+    }
+
+    .final-cta p { color: var(--muted); margin: 8px 0 0; }
+
+    footer {
+      padding: 0 0 38px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid, .grid-3, .steps, .final-cta {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .hero-copy, .offer-card, .final-cta {
+        padding: 28px;
+      }
+
+      .hero-points { grid-template-columns: 1fr; }
+
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html" aria-label="TurnAI főoldal">
+        <span class="brand-mark">TA</span>
+        <span>TurnAI</span>
+      </a>
+      <nav aria-label="Fő navigáció">
+        <a href="./index.html">Főoldal</a>
+        <a href="./folyamatautomatizalas.html">Folyamatautomatizálás</a>
+        <a href="./erdeklodoszerzes.html">Érdeklődőszerzés</a>
+        <a href="./arazas.html" class="active">Árazás</a>
+        <a href="./impresszum.html">Impresszum</a>
+        <a href="./adatvedelem.html">Adatvédelem</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Belépő ajánlat weboldali AI chathez</div>
+          <h1>Weboldali AI chat már 19 990 Ft / hó ártól</h1>
+          <p class="lead">Egyszerű, gyorsan bevezethető megoldás vállalkozásoknak, ha szeretnél automatikus válaszadást a gyakori kérdésekre és jobb érdeklődőkezelést a weboldaladon.</p>
+          <a class="cta" href="#ajanlat">Kérek ajánlatot</a>
+          <div class="hero-points">
+            <div>Gyakori kérdések automatikus megválaszolása</div>
+            <div>Érdeklődők fogadása akkor is, ha nem vagy elérhető</div>
+            <div>Gyors indulás, rövid és átlátható bevezetés</div>
+          </div>
+        </div>
+
+        <aside class="offer-card" id="ajanlat">
+          <div>
+            <div class="price-label">Kiemelt ajánlat</div>
+            <p class="price">19 990 Ft <small>/ hó</small></p>
+            <p class="price-note">Belépő csomag egy sima AI chat megoldáshoz weboldalra.</p>
+            <ul>
+              <li>Alap weboldali AI chat</li>
+              <li>Gyakori kérdések kezelése</li>
+              <li>Érdeklődők fogadása</li>
+              <li>Alap kapcsolatfelvételi adatok bekérése</li>
+              <li>Továbbítás egyeztetésre, ha szükséges</li>
+            </ul>
+          </div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:22px;">
+            <a class="cta" href="mailto:hello@turnai.hu?subject=AI%20chat%20ajanlat">Kérek ajánlatot</a>
+            <a class="cta-secondary" href="./index.html">Vissza a főoldalra</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Mit tartalmaz a sima AI chat?</h2>
+          <p>Röviden: egy alap weboldali chatbot, ami leveszi rólad a leggyakoribb kérdéseket és segít abban, hogy kevesebb érdeklődő vesszen el.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Automatikus válaszadás</h3>
+            <p>Megválaszolja a gyakori kérdéseket, például szolgáltatásokkal, működéssel vagy alap információkkal kapcsolatban.</p>
+          </article>
+          <article class="card">
+            <h3>Érdeklődők fogadása</h3>
+            <p>Fogadja a látogatók első üzeneteit akkor is, amikor épp nem vagy elérhető, és segít elindítani a kapcsolatfelvételt.</p>
+          </article>
+          <article class="card">
+            <h3>Alap adatbekérés</h3>
+            <p>Elkéri a legfontosabb adatokat, például nevet, e-mail címet, telefonszámot vagy rövid igényt.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Röviden összefoglalva</h2>
+          <p>Ez a csomag azoknak jó, akik egy gyorsan bevezethető, belépő szintű AI chat megoldást szeretnének a weboldalukra.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Mire jó?</h3>
+            <p>Segít válaszolni az alap kérdésekre és javítja a weboldalon érkező érdeklődők kezelését.</p>
+          </article>
+          <article class="card">
+            <h3>Mire nem való?</h3>
+            <p>Ez még nem teljes folyamat- vagy CRM-automatizálás, hanem egy egyszerűbb induló megoldás.</p>
+          </article>
+          <article class="card">
+            <h3>Kinek ajánlott?</h3>
+            <p>Kis- és középvállalkozásoknak, akik szeretnének gyorsabban reagálni a weboldali megkeresésekre.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Hogyan indul el?</h2>
+          <p>Egyszerű folyamat, felesleges bonyolítás nélkül.</p>
+        </div>
+        <div class="steps">
+          <article class="card">
+            <div class="step-number">1</div>
+            <h3>Egyeztetés</h3>
+            <p>Átbeszéljük, milyen kérdésekre válaszoljon a chat, és milyen célra használod a weboldalon.</p>
+          </article>
+          <article class="card">
+            <div class="step-number">2</div>
+            <h3>Beállítás</h3>
+            <p>Összerakjuk az alap működést, a kérdésköröket és a kapcsolatfelvételi logikát.</p>
+          </article>
+          <article class="card">
+            <div class="step-number">3</div>
+            <h3>Indulás</h3>
+            <p>Elindul a weboldali AI chat, és segít az első érdeklődők kezelésében.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Gyakori kérdések</h2>
+        </div>
+        <div class="faq">
+          <div class="faq-item">
+            <h3>Mit jelent a sima AI chat?</h3>
+            <p>Egy alap weboldali chatbotot, ami automatikusan válaszol a gyakori kérdésekre és fogadja az érdeklődőket.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Ez tartalmaz teljes automatizálást is?</h3>
+            <p>Nem. Ez egy belépő szintű csomag, ami a weboldali chat funkcióra koncentrál.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Később lehet bővíteni?</h3>
+            <p>Igen, ha később összetettebb folyamatokra vagy integrációkra van szükség, továbbfejleszthető a megoldás.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="final-cta">
+          <div>
+            <h2>Ha szeretnél egy egyszerűen induló weboldali AI chatet, ez egy jó belépő ajánlat.</h2>
+            <p>Átlátható induló csomag, egy konkrét célra: gyorsabb válaszadás és jobb érdeklődőkezelés.</p>
+          </div>
+          <a class="cta" href="mailto:hello@turnai.hu?subject=AI%20chat%20ajanlat">Kérek ajánlatot</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">TurnAI • Árazás oldal • GitHub Pages kompatibilis statikus HTML</div>
+  </footer>
+</body>
+</html>
