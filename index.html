@@ -265,28 +265,41 @@
       display: block;
     }
 
-    .hero {
-      min-height: 72vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 80px 20px 40px;
-    }
+  .hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px 40px;
+}
 
-    .hero h2 {
-      font-size: 56px;
-      margin-bottom: 20px;
-      max-width: 980px;
-      line-height: 1.1;
-    }
+.hero-content {
+  min-height: calc(100vh - 88px);
+  width: 100%;
+  max-width: 1180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
 
-    .hero p {
-      font-size: 19px;
-      color: #94a3b8;
-      max-width: 780px;
-    }
+.hero h2 {
+  font-size: clamp(4.2rem, 7vw, 6.4rem);
+  margin-bottom: 28px;
+  max-width: 1180px;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  color: #f8fafc;
+}
+
+.hero p {
+  font-size: clamp(1.45rem, 2.1vw, 1.9rem);
+  color: #cbd5e1;
+  max-width: 980px;
+  line-height: 1.75;
+  margin: 0 auto;
+}
 
 .pricing-hero-box {
   margin-top: 40px;
@@ -660,18 +673,24 @@
         margin-top: 8px;
       }
 
-      .hero {
-        min-height: 58vh;
-        padding-top: 60px;
-      }
+    .hero {
+  padding: 0 20px 20px;
+}
 
-      .hero h2 {
-        font-size: 38px;
-      }
+.hero-content {
+  min-height: 62vh;
+}
 
-      .hero p {
-        font-size: 17px;
-      }
+.hero h2 {
+  font-size: 44px;
+  line-height: 1.06;
+  margin-bottom: 22px;
+}
+
+.hero p {
+  font-size: 19px;
+  line-height: 1.72;
+}
 
 .pricing-hero-box {
   margin-top: 26px;
@@ -843,22 +862,24 @@
     </nav>
   </header>
 
-  <section class="hero">
+ <section class="hero">
+  <div class="hero-content">
     <h2>AI automatizáció, ami gyorsabbá és rendezettebbé teszi a működésed.</h2>
     <p>
       Weboldali chatbot, érdeklődőkezelés, folyamatautomatizálás és üzleti integrációk egy kézben.
       Kevesebb manuális munka, gyorsabb reakcióidő, több valódi üzleti lehetőség.
     </p>
+  </div>
 
-    <div class="pricing-hero-box">
-      <h3>Árazás – belépő ajánlat</h3>
-      <p>
-        Weboldali AI chat már <strong>19 990 Ft / hó</strong> ártól. Egy gyorsan bevezethető alap megoldás,
-        ami segít a gyakori kérdések megválaszolásában, az érdeklődők fogadásában és az alap kapcsolatfelvételi
-        adatok bekérésében. <a href="arazas%20(1).html">Részletek megtekintése →</a>
-      </p>
-    </div>
-  </section>
+  <div class="pricing-hero-box">
+    <h3>A leggyorsabban induló ajánlatunk</h3>
+    <p>
+      Weboldali AI chat már <strong>19 990 Ft / hó</strong> ártól. Egy látványosan gyorsan bevezethető,
+      azonnal használható megoldás, ami segít a gyakori kérdések megválaszolásában, az érdeklődők fogadásában
+      és az alap kapcsolatfelvételi adatok bekérésében. <a href="arazas%20(1).html">Részletek megtekintése →</a>
+    </p>
+  </div>
+</section>
 
   <section class="section">
     <h3>Amiben a TurnAI valódi üzleti előnyt ad</h3>
