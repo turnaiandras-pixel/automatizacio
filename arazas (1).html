@@ -62,22 +62,45 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text);
+      flex-shrink: 0;
     }
 
     .brand-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--primary), #59a8ad);
-      display: grid;
-      place-items: center;
-      color: white;
-      font-size: 0.95rem;
-      font-weight: 800;
-      box-shadow: var(--shadow);
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 24px rgba(32, 182, 158, 0.18);
+      flex-shrink: 0;
+    }
+
+    .brand-mark svg {
+      width: 26px;
+      height: 26px;
+      display: block;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .brand-name {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      color: #f8fafc;
+    }
+
+    .brand-name .ai {
+      color: var(--primary);
     }
 
     nav {
@@ -338,8 +361,19 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="./index.html" aria-label="TurnAI főoldal">
-        <span class="brand-mark">TA</span>
-        <span>TurnAI</span>
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 14H31" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+            <path d="M14 24H26" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+            <path d="M14 34H22" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="34" cy="14" r="3.5" fill="#0F172A"/>
+            <circle cx="29" cy="24" r="3.5" fill="#0F172A"/>
+            <circle cx="25" cy="34" r="3.5" fill="#0F172A"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Turn<span class="ai">AI</span></span>
+        </span>
       </a>
       <nav aria-label="Fő navigáció">
         <a href="./index.html">Főoldal</a>
