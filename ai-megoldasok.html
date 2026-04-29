@@ -2,535 +2,828 @@
 <html lang="hu">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18121417274"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18121417274"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18121417274');
+  </script>
 
-  gtag('config', 'AW-18121417274');
-</script>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AI megoldások cégeknek | TurnAI</title>
-<meta name="description" content="AI megoldások cégeknek: AI chat weboldalra, érdeklődőkezelés automatizálása és üzleti folyamatok támogatása mesterséges intelligenciával." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI megoldások cégeknek | TurnAI</title>
+  <meta name="description" content="Letisztult, prémium AI megoldások cégeknek: AI chat, ügyfélkiszolgálás és skálázható digitális ügyfélélmény." />
 
-<style>
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-html, body {
-overflow-x: hidden;
-}
+  <style>
+    :root{
+      --bg:#0f172a;
+      --bg-soft:#142033;
+      --panel:rgba(17, 25, 40, 0.72);
+      --panel-strong:rgba(20, 29, 47, 0.92);
+      --border:rgba(255,255,255,0.08);
+      --border-soft:rgba(255,255,255,0.05);
+      --text:#f8fafc;
+      --muted:#94a3b8;
+      --soft:#cbd5e1;
+      --accent:#20b69e;
+      --accent-soft:#5eead4;
+      --shadow:0 18px 50px rgba(2, 6, 23, 0.32);
+      --radius-xl:28px;
+      --radius-lg:22px;
+      --radius-md:16px;
+      --container:1280px;
+    }
 
-body {
-font-family: 'Inter', sans-serif;
-background: #0f172a;
-color: #e2e8f0;
-line-height: 1.7;
-word-wrap: break-word;
-}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(32,182,158,0.08), transparent 24%),
+        linear-gradient(180deg, #0f172a 0%, #0c1424 100%);
+      color:var(--text);
+      line-height:1.65;
+      overflow-x:hidden;
+    }
 
-.site-header {
-padding: 20px 40px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-gap: 20px;
-border-bottom: 1px solid rgba(255,255,255,0.1);
-position: relative;
-}
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
+    img{max-width:100%;display:block}
 
-.brand {
-display: inline-flex;
-align-items: center;
-gap: 14px;
-text-decoration: none;
-color: #e2e8f0;
-min-width: 0;
-}
+    .shell{
+      width:min(var(--container), 100%);
+      margin:0 auto;
+      padding-inline:clamp(18px, 3vw, 36px);
+    }
 
-.brand-mark {
-width: 46px;
-height: 46px;
-border-radius: 14px;
-background: linear-gradient(180deg, #20b69e, #17917f);
-display: flex;
-align-items: center;
-justify-content: center;
-box-shadow: 0 10px 24px rgba(32, 182, 158, 0.18);
-flex-shrink: 0;
-}
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter:blur(14px);
+      background:rgba(15,23,42,0.78);
+      border-bottom:1px solid var(--border-soft);
+    }
 
-.brand-mark svg {
-width: 26px;
-height: 26px;
-display: block;
-}
+    .header-inner{
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      position:relative;
+    }
 
-.brand-text {
-display: flex;
-flex-direction: column;
-line-height: 1.05;
-min-width: 0;
-}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
 
-.brand-name {
-font-size: 22px;
-font-weight: 700;
-letter-spacing: 0.4px;
-color: #f8fafc;
-}
+    .brand-mark{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      background:linear-gradient(180deg, #28ccb0, #17917f);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 12px 28px rgba(32,182,158,0.18);
+      flex-shrink:0;
+    }
 
-.brand-name .ai {
-color: #20b69e;
-}
+    .brand-mark svg{width:24px;height:24px}
+    .brand-text{display:flex;flex-direction:column;line-height:1.05}
+    .brand-name{font-size:1.2rem;font-weight:800;letter-spacing:-0.03em}
+    .brand-name .ai{color:var(--accent-soft)}
+    .brand-tagline{
+      margin-top:4px;
+      font-size:.72rem;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
 
-.brand-tagline {
-font-size: 12px;
-color: #94a3b8;
-letter-spacing: 0.6px;
-text-transform: uppercase;
-margin-top: 4px;
-}
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
 
-.menu-toggle {
-display: none;
-appearance: none;
-border: 1px solid rgba(255,255,255,0.14);
-background: transparent;
-color: #fff;
-width: 46px;
-height: 46px;
-border-radius: 12px;
-font-size: 22px;
-cursor: pointer;
-flex-shrink: 0;
-}
+    .nav a{
+      font-size:.95rem;
+      color:var(--muted);
+      transition:.25s ease;
+      white-space:nowrap;
+    }
 
-.nav {
-display: flex;
-align-items: center;
-gap: 20px;
-}
-
-.nav a,
-.dropbtn {
-color: #94a3b8;
-text-decoration: none;
-font-size: 14px;
-cursor: pointer;
-}
-
-.nav a:hover,
-.dropbtn:hover {
-color: #fff;
-}
+    .nav a:hover{color:#fff}
 
 .dropdown {
-position: relative;
-display: inline-block;
+  position: relative;
 }
 
 .dropdown-content {
-display: none;
-position: absolute;
-top: 100%;
-left: 0;
-min-width: 240px;
-background: #1e293b;
-border: 1px solid rgba(255,255,255,0.08);
-border-radius: 10px;
-padding: 10px 0;
-z-index: 1000;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 250px;
+  padding: 12px;
+  border-radius: 18px;
+  background: #132038;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.34);
+  flex-direction: column;
+  gap: 8px;
+  z-index: 1001;
 }
 
-.dropdown-content a {
-display: block;
-padding: 10px 16px;
-color: #cbd5e1;
-text-decoration: none;
-white-space: nowrap;
-margin: 0;
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content,
+.dropdown-content:hover {
+  display: flex;
 }
+    .dropdown-content a{
+      padding:8px 10px;
+      border-radius:12px;
+      color:#dbe6f3;
+    }
 
-.dropdown-content a:hover {
-background: #334155;
-color: #fff;
-}
+    .dropdown-content a:hover{background:rgba(255,255,255,0.05)}
 
-.dropdown:hover .dropdown-content {
-display: block;
-}
+    .menu-toggle{
+      display:none;
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.12);
+      background:transparent;
+      color:#fff;
+      cursor:pointer;
+    }
 
-main {
-max-width: 920px;
-margin: 0 auto;
-padding: 64px 20px 80px;
-}
+    .hero{
+      padding:72px 0 44px;
+    }
 
-.hero-card,
-.section-card {
-background: #162033;
-border: 1px solid rgba(255,255,255,0.06);
-border-radius: 24px;
-padding: 32px;
-box-shadow: 0 20px 60px rgba(0,0,0,0.18);
-overflow: hidden;
-}
+    .hero-panel{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:22px;
+      align-items:stretch;
+    }
 
-.hero-card {
-margin-bottom: 24px;
-}
+    .hero-copy,
+    .hero-aside,
+    .card,
+    .cta-panel{
+      background:var(--panel);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(14px);
+    }
 
-.section-card {
-margin-top: 24px;
-}
+    .hero-copy{
+      border-radius:32px;
+      padding:clamp(26px, 4vw, 44px);
+    }
 
-.badge {
-display: inline-block;
-margin-bottom: 16px;
-font-size: 15px;
-font-weight: 600;
-color: #5eead4;
-}
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(94,234,212,0.18);
+      background:rgba(94,234,212,0.06);
+      color:var(--accent-soft);
+      font-size:.82rem;
+      font-weight:700;
+      letter-spacing:.02em;
+      margin-bottom:18px;
+    }
 
-h2 {
-font-size: 52px;
-line-height: 1.04;
-margin-bottom: 18px;
-color: #f8fafc;
-letter-spacing: -0.04em;
-max-width: 100%;
-overflow-wrap: anywhere;
-word-break: break-word;
-hyphens: auto;
-}
+    h1{
+      font-size:clamp(2rem, 3.8vw, 3rem);
+      line-height:1.08;
+      letter-spacing:-0.04em;
+      font-weight:800;
+      max-width:14ch;
+      margin-bottom:18px;
+    }
 
-.subtitle {
-font-size: 21px;
-line-height: 1.7;
-color: #94a3b8;
-margin-bottom: 24px;
-max-width: 780px;
-}
+    .hero-lead{
+      color:var(--soft);
+      font-size:1.03rem;
+      max-width:58ch;
+      margin-bottom:12px;
+    }
 
-.lead {
-font-size: 18px;
-line-height: 1.8;
-color: #cbd5e1;
-margin-bottom: 18px;
-}
+    .hero-sub{
+      color:var(--muted);
+      font-size:.98rem;
+      max-width:58ch;
+    }
 
-h3 {
-font-size: 28px;
-margin-bottom: 14px;
-color: #f8fafc;
-}
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:26px;
+    }
 
-p {
-font-size: 18px;
-line-height: 1.8;
-color: #cbd5e1;
-margin-bottom: 16px;
-max-width: 100%;
-}
+    .btn{
+      min-height:50px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:0 18px;
+      border-radius:14px;
+      font-size:.95rem;
+      font-weight:700;
+      transition:.25s ease;
+      white-space:nowrap;
+    }
 
-ul {
-padding-left: 22px;
-}
+    .btn-primary{
+      background:linear-gradient(135deg, #65ecd8, #20b69e);
+      color:#082129;
+      box-shadow:0 14px 30px rgba(32,182,158,0.24);
+    }
 
-li {
-font-size: 18px;
-line-height: 1.8;
-color: #cbd5e1;
-margin-bottom: 8px;
-}
+    .btn-primary:hover{
+      transform:translateY(-1px);
+      box-shadow:0 18px 34px rgba(32,182,158,0.30);
+    }
 
-.hero-actions {
-display: flex;
-gap: 14px;
-flex-wrap: wrap;
-margin-top: 10px;
-}
+    .btn-secondary{
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.10);
+      color:var(--text);
+    }
 
-.btn {
-display: inline-block;
-padding: 14px 22px;
-border-radius: 10px;
-text-decoration: none;
-font-size: 15px;
-font-weight: 600;
-transition: 0.25s ease;
-}
+    .btn-secondary:hover{
+      background:rgba(255,255,255,0.05);
+    }
 
-.btn-primary {
-background: #20b69e;
-color: #ffffff;
-}
+    .hero-aside{
+      border-radius:32px;
+      padding:20px;
+      display:grid;
+      gap:14px;
+    }
 
-.btn-primary:hover {
-background: #1ca08a;
-}
+    .mini-card{
+      padding:18px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.06);
+    }
 
-.btn-secondary {
-border: 1px solid rgba(255,255,255,0.16);
-color: #e2e8f0;
-background: transparent;
-}
+    .mini-card span{
+      display:block;
+      color:var(--muted);
+      font-size:.76rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      margin-bottom:8px;
+    }
 
-.btn-secondary:hover {
-background: #1e293b;
-}
+    .mini-card strong{
+      display:block;
+      font-size:1.05rem;
+      line-height:1.35;
+      margin-bottom:6px;
+      font-weight:700;
+    }
 
-footer {
-text-align: center;
-padding: 20px;
-border-top: 1px solid rgba(255,255,255,0.1);
-color: #64748b;
-font-size: 14px;
-}
+    .mini-card p{
+      color:var(--soft);
+      font-size:.94rem;
+      line-height:1.6;
+    }
 
-footer a {
-color: #94a3b8;
-margin: 0 10px;
-text-decoration: none;
-}
+    .section{
+      padding:56px 0;
+    }
 
-footer a:hover {
-color: #fff;
-}
+    .section-head{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:24px;
+      align-items:end;
+      margin-bottom:22px;
+    }
 
-@media (max-width: 768px) {
-.site-header {
-padding: 16px 20px;
-}
+    .kicker{
+      color:var(--accent-soft);
+      font-size:.76rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-weight:800;
+      margin-bottom:10px;
+      white-space:nowrap;
+    }
 
-.brand {
-max-width: calc(100% - 58px);
-}
+    h2{
+      font-size:clamp(1.55rem, 2.4vw, 2.2rem);
+      line-height:1.12;
+      letter-spacing:-0.035em;
+      font-weight:800;
+      max-width:16ch;
+    }
 
-.brand-name {
-font-size: 18px;
-}
+    .section-intro{
+      color:var(--muted);
+      font-size:.98rem;
+      max-width:60ch;
+    }
 
-.brand-tagline {
-font-size: 11px;
-}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:18px;
+    }
 
-.menu-toggle {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-}
+    .card{
+      border-radius:24px;
+      padding:24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015)),
+        var(--panel-strong);
+    }
 
-.nav {
-display: none;
-position: absolute;
-top: calc(100% + 10px);
-left: 20px;
-right: 20px;
-background: #1e293b;
-border: 1px solid rgba(255,255,255,0.08);
-border-radius: 14px;
-padding: 12px;
-flex-direction: column;
-align-items: stretch;
-gap: 8px;
-z-index: 1000;
-box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-}
+    .span-4{grid-column:span 4}
+    .span-5{grid-column:span 5}
+    .span-6{grid-column:span 6}
+    .span-7{grid-column:span 7}
+    .span-12{grid-column:span 12}
 
-.nav.open {
-display: flex;
-}
+    .card-label{
+      display:inline-block;
+      margin-bottom:12px;
+      color:var(--accent-soft);
+      font-size:.74rem;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-weight:800;
+      white-space:nowrap;
+    }
 
-.nav a,
-.dropbtn {
-width: 100%;
-display: block;
-font-size: 16px;
-padding: 10px 6px;
-}
+    .card h3{
+      font-size:1.18rem;
+      line-height:1.25;
+      letter-spacing:-0.02em;
+      margin-bottom:10px;
+      font-weight:700;
+      max-width:24ch;
+    }
 
-.dropdown {
-width: 100%;
-}
+    .card p{
+      color:var(--soft);
+      font-size:.96rem;
+      line-height:1.7;
+      max-width:56ch;
+    }
 
-.dropdown-content {
-display: none;
-position: static;
-min-width: 100%;
-margin-top: 6px;
-}
+    .list{
+      list-style:none;
+      display:grid;
+      gap:10px;
+      margin-top:12px;
+    }
 
-.dropdown.open .dropdown-content {
-display: block;
-}
+    .list li{
+      color:var(--soft);
+      font-size:.95rem;
+      padding-left:18px;
+      position:relative;
+    }
 
-main {
-padding: 24px 14px 44px;
-}
+    .list li::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:.7em;
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--accent);
+      transform:translateY(-50%);
+    }
 
-.hero-card,
-.section-card {
-padding: 22px 18px;
-border-radius: 18px;
-}
+    .process{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
 
-h2 {
-font-size: 28px;
-line-height: 1.06;
-letter-spacing: -0.03em;
-margin-bottom: 16px;
-}
+    .step{
+      background:var(--panel);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      border-radius:22px;
+      padding:22px;
+    }
 
-.subtitle,
-.lead,
-p,
-li {
-font-size: 17px;
-line-height: 1.75;
-}
+    .step-no{
+      width:36px;
+      height:36px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(94,234,212,0.08);
+      border:1px solid rgba(94,234,212,0.14);
+      color:var(--accent-soft);
+      font-size:.86rem;
+      font-weight:800;
+      margin-bottom:14px;
+    }
 
-h3 {
-font-size: 24px;
-}
+    .step h4{
+      font-size:1.02rem;
+      margin-bottom:8px;
+      font-weight:700;
+      white-space:nowrap;
+    }
 
-.hero-actions {
-flex-direction: column;
-}
+    .step p{
+      color:var(--muted);
+      font-size:.94rem;
+      line-height:1.65;
+    }
 
-.hero-actions .btn {
-width: 100%;
-text-align: center;
-}
-}
-</style>
+    .cta-wrap{
+      padding:56px 0 84px;
+    }
+
+    .cta-panel{
+      border-radius:32px;
+      padding:clamp(26px, 4vw, 46px);
+      background:
+        radial-gradient(circle at 85% 20%, rgba(94,234,212,0.10), transparent 24%),
+        linear-gradient(180deg, rgba(17,25,40,0.95), rgba(14,22,36,0.96));
+    }
+
+    .cta-panel h2{
+      max-width:14ch;
+      margin-bottom:14px;
+    }
+
+    .cta-panel p{
+      color:var(--soft);
+      font-size:1rem;
+      max-width:62ch;
+      line-height:1.75;
+      margin-bottom:22px;
+    }
+
+    footer{
+      border-top:1px solid var(--border-soft);
+      padding:24px 0 32px;
+      color:#7b8aa6;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .footer-links a:hover{color:#fff}
+
+    @media (max-width: 1024px){
+      .hero-panel,
+      .section-head{
+        grid-template-columns:1fr;
+      }
+
+      .process{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .span-4,.span-5,.span-6,.span-7{
+        grid-column:span 12;
+      }
+    }
+
+    @media (max-width: 820px){
+      .menu-toggle{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+      }
+
+      .nav{
+        display:none;
+        position:absolute;
+        top:calc(100% + 10px);
+        left:18px;
+        right:18px;
+        padding:14px;
+        border-radius:18px;
+        background:#132038;
+        border:1px solid rgba(255,255,255,0.08);
+        box-shadow:0 20px 40px rgba(0,0,0,0.34);
+        flex-direction:column;
+        align-items:flex-start;
+        gap:8px;
+      }
+
+      .nav.open{display:flex}
+      .nav a{padding:6px 4px;color:#dbe6f3}
+      .dropdown-content{
+        position:static;
+        display:flex;
+        min-width:0;
+        width:100%;
+        padding:0 0 0 10px;
+        background:transparent;
+        border:0;
+        box-shadow:none;
+      }
+      .dropdown:hover .dropdown-content{display:flex}
+    }
+
+    @media (max-width: 640px){
+      .hero{padding-top:40px}
+      .hero-actions{flex-direction:column}
+      .hero-actions .btn{width:100%}
+      .process{grid-template-columns:1fr}
+      .hero-copy,.hero-aside,.card,.step,.cta-panel{border-radius:22px}
+      .footer-inner{flex-direction:column;align-items:flex-start}
+      h1{max-width:12ch}
+      h2{max-width:13ch}
+      .card h3{max-width:20ch}
+      .step h4{white-space:normal}
+    }
+  </style>
 </head>
 <body>
-<header class="site-header">
-<a href="index.html" class="brand" aria-label="TurnAI kezdőlap">
-<div class="brand-mark">
-<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M14 14H31" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
-<path d="M14 24H26" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
-<path d="M14 34H22" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
-<circle cx="34" cy="14" r="3.5" fill="#0F172A"/>
-<circle cx="29" cy="24" r="3.5" fill="#0F172A"/>
-<circle cx="25" cy="34" r="3.5" fill="#0F172A"/>
-</svg>
-</div>
-<div class="brand-text">
-<span class="brand-name">Turn<span class="ai">AI</span></span>
-<span class="brand-tagline">automatizálás · integráció · ai</span>
-</div>
-</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a href="index.html" class="brand" aria-label="TurnAI kezdőlap">
+        <div class="brand-mark">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M14 14H31" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+            <path d="M14 24H26" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+            <path d="M14 34H22" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="34" cy="14" r="3.5" fill="#0F172A"/>
+            <circle cx="29" cy="24" r="3.5" fill="#0F172A"/>
+            <circle cx="25" cy="34" r="3.5" fill="#0F172A"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Turn<span class="ai">AI</span></span>
+          <span class="brand-tagline">automatizálás · integráció · ai</span>
+        </div>
+      </a>
 
-<button class="menu-toggle" aria-label="Menü megnyitása" aria-expanded="false">☰</button>
+      <button class="menu-toggle" aria-label="Menü megnyitása" aria-expanded="false">☰</button>
 
-<nav class="nav">
-<a href="index.html">Kezdőlap</a>
+      <nav class="nav">
+        <a href="index.html">Kezdőlap</a>
+        <div class="dropdown">
+          <a href="javascript:void(0)">Szolgáltatások</a>
+          <div class="dropdown-content">
+            <a href="folyamatautomatizalas.html">Folyamatautomatizálás</a>
+            <a href="integraciok.html">Érdeklődőkezelés</a>
+            <a href="ai-megoldasok.html">Weboldali AI chat</a>
+          </div>
+        </div>
+        <a href="arazas.html">Árazás</a>
+        <a href="adatvedelem.html">Adatvédelem</a>
+        <a href="impresszum.html">Impresszum</a>
+      </nav>
+    </div>
+  </header>
 
-<div class="dropdown">
-<a href="#" class="dropbtn">Szolgáltatások</a>
-<div class="dropdown-content">
-<a href="folyamatautomatizalas.html">Folyamatautomatizálás</a>
-<a href="integraciok.html">Integrációk</a>
-<a href="ai-megoldasok.html">Weboldali AI chat</a>
-</div>
-</div>
-<a href="arazas%20(1).html">Árazás</a>
-<a href="adatvedelem.html">Adatvédelem</a>
-<a href="impresszum.html">Impresszum</a>
-</nav>
-</header>
+  <main>
+    <section class="hero">
+      <div class="shell hero-panel">
+        <div class="hero-copy">
+          <div class="eyebrow">AI megoldások cégeknek</div>
+          <h1>AI chat és automatizálás, ami valóban segít.</h1>
+          <p class="hero-lead">
+            A TurnAI olyan rendszereket épít, amelyek gyorsabban kezelik az érdeklődőket,
+            csökkentik az ismétlődő kérdéseket, és rendezettebbé teszik a működést.
+          </p>
+          <p class="hero-sub">
+            Nem egy látványos extra, hanem egy üzletileg hasznos, letisztult digitális eszköz.
+          </p>
 
-<main>
-<section class="hero-card">
-<div class="badge">🤖 Szolgáltatás</div>
-<h2>AI megoldások cégeknek</h2>
-<p class="subtitle">
-AI megoldásokat építünk cégeknek, amelyek segítenek az érdeklődők kezelésében,
-a weboldali kommunikáció automatizálásában és a napi üzleti folyamatok
-gyorsabb, hatékonyabb működtetésében.
-</p>
+          <div class="hero-actions">
+            <a href="mailto:info@turnai.co.hu" class="btn btn-primary">Egyeztetést kérek</a>
+            <a href="#mi-az-ai-chat" class="btn btn-secondary">Részletek</a>
+          </div>
+        </div>
 
-<p class="lead">
-Az AI használható ügyfélkommunikáció támogatására, dokumentumok feldolgozására,
-gyakori kérdések kezelésére vagy belső tudásbázisokra épülő asszisztensek létrehozására.
-</p>
+        <aside class="hero-aside" aria-label="Kiemelt pontok">
+          <div class="mini-card">
+            <span>Weboldali AI chat</span>
+            <strong>Gyorsabb válaszadás</strong>
+            <p>A látogatók azonnal választ kapnak a legfontosabb kérdéseikre.</p>
+          </div>
 
-<p class="lead">
-A cél nem az öncélú technológia, hanem az, hogy a mesterséges intelligencia
-ténylegesen gyorsabbá és hatékonyabbá tegye a működést.
-</p>
-</section>
+          <div class="mini-card">
+            <span>Érdeklődőkezelés</span>
+            <strong>Több rendezett megkeresés</strong>
+            <p>Az AI segít az alapadatok bekérésében és az érdeklődők rendszerezésében.</p>
+          </div>
 
-<section class="section-card">
-<h3>Miben segít?</h3>
-<ul>
-<li>AI chatbotok és asszisztensek</li>
-<li>Szöveg- és dokumentumfeldolgozás</li>
-<li>Automatikus válaszgenerálás</li>
-<li>Gyorsabb információkezelés</li>
-<li>Hatékonyabb ügyfélkommunikáció</li>
-</ul>
-</section>
+          <div class="mini-card">
+            <span>Folyamatautomatizálás</span>
+            <strong>Kevesebb manuális teher</strong>
+            <p>Az ismétlődő adminisztratív lépések automatizálhatók és egységesebbé válnak.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-<section class="section-card">
-<h3>Hogyan néz ki a gyakorlatban?</h3>
-<p>
-Egy AI rendszer automatikusan megválaszolhat gyakori kérdéseket, összefoglalhat e-maileket,
-segíthet dokumentumokban keresni, vagy előszűrheti a beérkező megkereséseket.
-</p>
-</section>
+    <section class="section" id="mi-az-ai-chat">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Mi az AI chat?</div>
+            <h2>Intelligens párbeszéd a weboldal és a látogató között</h2>
+          </div>
+          <p class="section-intro">
+            Az AI chat természetes nyelven kommunikál, megérti a kérdések szándékát, és releváns válaszokat ad
+            a céged tartalmára vagy tudására építve.
+          </p>
+        </div>
 
-<section class="section-card">
-<h3>Beszéljünk az AI lehetőségekről</h3>
-<p>
-Ha szeretnéd megnézni, hogy a mesterséges intelligencia hol tud valódi üzleti előnyt adni,
-írj egy üzenetet, és nézzük meg, milyen megoldás illik a céged működéséhez.
-</p>
+        <div class="grid">
+          <article class="card span-7">
+            <span class="card-label">Lényeg</span>
+            <h3>Nem egyszerű chatablak, hanem egy intelligens információs réteg.</h3>
+            <p>
+              Segít abban, hogy a látogatók gyorsabban eligazodjanak, kevesebb súrlódással kapjanak választ,
+              és könnyebben jussanak el a kapcsolatfelvételig vagy a megfelelő megoldásig.
+            </p>
+          </article>
 
-<div class="hero-actions">
-<a href="mailto:info@turnai.co.hu" class="btn btn-primary">Konzultáció kérése</a>
-<a href="folyamatautomatizalas.html" class="btn btn-secondary">Folyamatautomatizálás megtekintése</a>
-</div>
-</section>
-</main>
+          <article class="card span-5">
+            <span class="card-label">Különbség</span>
+            <h3>Több, mint egy szabályalapú chatbot.</h3>
+            <p>
+              Rugalmasabban kezeli a megfogalmazásokat, a követőkérdéseket is értelmezi,
+              és természetesebb párbeszédet ad.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<footer>
-© 2026 TurnAI |
-<a href="adatvedelem.html">Adatvédelem</a> |
-<a href="impresszum.html">Impresszum</a>
-</footer>
+    <section class="section" id="elonyok">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Üzleti előnyök</div>
+            <h2>Letisztult ügyfélélmény, jobb működési hatékonyság</h2>
+          </div>
+          <p class="section-intro">
+            A valódi érték nem önmagában a chat, hanem az, hogy gyorsabbá, követhetőbbé és skálázhatóbbá teszi a kommunikációt.
+          </p>
+        </div>
 
-<script>
-const menuToggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.nav');
-const dropbtn = document.querySelector('.dropbtn');
-const dropdown = document.querySelector('.dropdown');
+        <div class="grid">
+          <article class="card span-4">
+            <span class="card-label">01</span>
+            <h3>Azonnali információadás</h3>
+            <p>A legfontosabb kérdésekre gyors és konzisztens válasz adható.</p>
+          </article>
 
-if (menuToggle && nav) {
-menuToggle.addEventListener('click', () => {
-nav.classList.toggle('open');
-const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-menuToggle.setAttribute('aria-expanded', String(!expanded));
-});
-}
+          <article class="card span-4">
+            <span class="card-label">02</span>
+            <h3>Jobb érdeklődőkezelés</h3>
+            <p>Az érdeklődő nem marad iránymutatás nélkül, így könnyebben lép tovább.</p>
+          </article>
 
-if (dropbtn && dropdown) {
-dropbtn.addEventListener('click', (e) => {
-if (window.innerWidth <= 768) {
-e.preventDefault();
-dropdown.classList.toggle('open');
-}
-});
-}
-</script>
+          <article class="card span-4">
+            <span class="card-label">03</span>
+            <h3>Kevesebb manuális teher</h3>
+            <p>Az ismétlődő kérdések kezelése részben automatizálható.</p>
+          </article>
+
+          <article class="card span-6">
+            <span class="card-label">Mire használható?</span>
+            <h3>FAQ, szolgáltatásmagyarázat, előszűrés és kapcsolatfelvételi támogatás</h3>
+            <ul class="list">
+              <li>Gyakori kérdések megválaszolása.</li>
+              <li>Szolgáltatások közötti eligazítás.</li>
+              <li>Ajánlatkérés előkészítése.</li>
+              <li>Érdeklődők irányítása a megfelelő csatornára.</li>
+            </ul>
+          </article>
+
+          <article class="card span-6">
+            <span class="card-label">Vezetői nézőpont</span>
+            <h3>Professzionálisabb digitális jelenlét</h3>
+            <p>
+              Egy jól kialakított AI chat azt mutatja, hogy a cég gyors, rendszerszintű és ügyfélközpontú módon kezeli
+              az információátadást.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mukodes">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Működés</div>
+            <h2>Egyszerű élmény a felhasználónak, strukturált logika a háttérben</h2>
+          </div>
+          <p class="section-intro">
+            A látogató kérdez, a rendszer értelmez, válaszol, és szükség esetén a következő lépés felé terel.
+          </p>
+        </div>
+
+        <div class="process">
+          <article class="step">
+            <div class="step-no">01</div>
+            <h4>Kérdés</h4>
+            <p>A látogató természetes nyelven írja le, mire van szüksége.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-no">02</div>
+            <h4>Értelmezés</h4>
+            <p>Az AI felismeri a szándékot és a releváns témát.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-no">03</div>
+            <h4>Válasz</h4>
+            <p>A rendszer a céges tartalom alapján ad gyors, célzott információt.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-no">04</div>
+            <h4>Továbblépés</h4>
+            <p>Kapcsolatfelvételhez, szolgáltatáshoz vagy következő akcióhoz irányít.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-wrap" id="kapcsolat">
+      <div class="shell">
+        <div class="cta-panel">
+          <div class="kicker">Konzultáció</div>
+          <h2>Kérj rövid egyeztetést</h2>
+          <p>
+            Ha szeretnéd látni, hogy a te cégednél hol adhat valódi üzleti előnyt egy AI chat,
+            nézzük meg együtt a működésedhez legjobban illő megoldást.
+          </p>
+
+          <div class="hero-actions">
+            <a href="mailto:info@turnai.co.hu" class="btn btn-primary">Konzultáció kérése</a>
+            <a href="folyamatautomatizalas.html" class="btn btn-secondary">Folyamatautomatizálás</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <div>© 2026 TurnAI · AI megoldások cégeknek</div>
+      <div class="footer-links">
+        <a href="adatvedelem.html">Adatvédelem</a>
+        <a href="impresszum.html">Impresszum</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav');
+
+    if (menuToggle && nav) {
+      menuToggle.addEventListener('click', () => {
+        nav.classList.toggle('open');
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', String(!expanded));
+      });
+    }
+  </script>
 </body>
 </html>
